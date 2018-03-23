@@ -12,4 +12,9 @@ public class Raptor extends Dino {
     public Raptor(String name, SpeciesType species, Paddock paddock) {
         super(name, species, paddock);
     }
+
+    public void eat(Paddock paddock) {
+        foodSource = paddock.setFood_stock(paddock.getFood_stock() - 1);
+        this.belly();
+    }
 }
