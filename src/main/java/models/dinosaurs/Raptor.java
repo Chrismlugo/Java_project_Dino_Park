@@ -13,8 +13,4 @@ public class Raptor extends Dino {
         super(name, species, paddock);
     }
 
-    public void eat(Paddock paddock) {
-        foodSource = paddock.setFood_stock(paddock.getFood_stock() - 1);
-        this.belly();
-    }
 }

@@ -59,4 +59,9 @@ public abstract class Dino {
     public void setPaddock(Paddock paddock) {
         this.paddock = paddock;
     }
+
+    public void eat() {
+        this.belly += 1;
+        getPaddock().feedDino();
+    }
 }
