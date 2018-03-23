@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Dino_Park" target="1.5" />
+      <module name="Dino_Park" target="1.8" />
       <module name="mynewproject" target="1.5" />
     </bytecodeTargetLevel>
   </component>
