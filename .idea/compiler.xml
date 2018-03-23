@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Dino_Park" />
         <module name="mynewproject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Dino_Park" target="1.5" />
       <module name="mynewproject" target="1.5" />
     </bytecodeTargetLevel>
   </component>
