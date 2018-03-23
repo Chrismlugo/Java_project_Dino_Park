@@ -17,6 +17,7 @@ public abstract class Dino {
         this.name = name;
         this.species = species;
         this.paddock = paddock;
+        this.belly = 0;
     }
 
     public int getId() {
