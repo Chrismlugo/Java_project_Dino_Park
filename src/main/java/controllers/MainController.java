@@ -16,6 +16,8 @@ public class MainController {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
+        LoginController loginController = new LoginController();
+
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
