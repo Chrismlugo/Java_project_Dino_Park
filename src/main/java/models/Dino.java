@@ -1,5 +1,7 @@
 package models;
 
+import models.Enums.SpeciesType;
+
 public abstract class Dino {
     private int id;
     private String name;
