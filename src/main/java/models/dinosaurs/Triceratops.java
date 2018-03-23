@@ -4,6 +4,11 @@ import models.Dino;
 import models.Enums.SpeciesType;
 import models.paddocks.Paddock;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "triceratopses")
 public class Triceratops extends Dino {
 
     public Triceratops() {}

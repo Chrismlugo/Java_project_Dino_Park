@@ -3,9 +3,11 @@ package models.paddocks;
 import models.Dino;
 import models.Enums.SpeciesType;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Table(name="paddocks")
 public class Paddock {
     private int id;
     private String name;
@@ -23,6 +25,8 @@ public class Paddock {
         this.dinosaurs = new ArrayList<Dino>();
     }
 
+    @Id
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -31,6 +35,7 @@ public class Paddock {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -39,6 +44,7 @@ public class Paddock {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "paddock")
     public List<Dino> getDinosaurs() {
         return dinosaurs;
     }
@@ -47,6 +53,7 @@ public class Paddock {
         this.dinosaurs = dinosaurs;
     }
 
+    @Column(name = "species")
     public SpeciesType getSpecies() {
         return species;
     }
@@ -55,6 +62,7 @@ public class Paddock {
         this.species = species;
     }
 
+    @Column(name = "food_stock")
     public int getFood_stock() {
         return food_stock;
     }
