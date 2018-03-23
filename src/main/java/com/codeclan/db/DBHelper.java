@@ -58,4 +58,49 @@ public class DBHelper {
             session.close();
         }
     }
+
+    public static <T> T getUnique(Criteria criteria){
+        T result = null;
+        try {
+            transaction = session.beginTransaction();
+            result = (T)criteria.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException e){
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
+    public static <T>List<T> getList(Criteria cr){
+        List<T> results = null;
+        try {
+            transaction = session.beginTransaction();
+            results = cr.list();
+            transaction.commit();
+        } catch (HibernateException e){
+            transaction.rollback();
+            e.printStackTrace();
+        } finally{
+            session.close();
+        }
+        return  results;
+    }
+
+    public static <T> T find(Class classType, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
+        T result = null;
+        Criteria criteria = session.createCriteria(classType);
+        criteria.add(Restrictions.idEq(id));
+        result = getUnique(criteria);
+        return result;
+    }
+
+    public static <T>List<T> getAll(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria cr = session.createCriteria(classType);
+        return getList(cr);
+    }
 }

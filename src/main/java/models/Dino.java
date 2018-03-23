@@ -1,19 +1,22 @@
 package models;
 
 import models.Enums.SpeciesType;
+import models.paddocks.Paddock;
 
 public abstract class Dino {
     private int id;
     private String name;
     private int belly;
     private SpeciesType species;
+    private Paddock paddock;
 
     public Dino() {
     }
 
-    public Dino(String name, SpeciesType species) {
+    public Dino(String name, SpeciesType species, Paddock paddock) {
         this.name = name;
         this.species = species;
+        this.paddock = paddock;
     }
 
     public int getId() {
@@ -46,5 +49,13 @@ public abstract class Dino {
 
     public void setSpecies(SpeciesType species) {
         this.species = species;
+    }
+
+    public Paddock getPaddock() {
+        return paddock;
+    }
+
+    public void setPaddock(Paddock paddock) {
+        this.paddock = paddock;
     }
 }
