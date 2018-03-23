@@ -1,5 +1,8 @@
 package com.codeclan.db;
 
+import models.Dino;
+import models.Enums.SpeciesType;
+import models.paddocks.Paddock;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -102,5 +105,23 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria cr = session.createCriteria(classType);
         return getList(cr);
+    }
+
+    public static List<Paddock> getAllPaddocksOfSpeciesType(SpeciesType species){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Paddock> results = null;
+        Criteria cr = session.createCriteria(Paddock.class);
+        cr.add(Restrictions.eq("species", species));
+        results = getList(cr);
+        return results;
+    }
+
+    public static List<Dino> getAllDinosOfSpeciesType(SpeciesType species){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Dino> results = null;
+        Criteria cr = session.createCriteria(Paddock.class);
+        cr.add(Restrictions.eq("species", species));
+        results = getList(cr);
+        return results;
     }
 }
