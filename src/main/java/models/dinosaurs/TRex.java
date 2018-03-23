@@ -4,6 +4,11 @@ import models.Dino;
 import models.Enums.SpeciesType;
 import models.paddocks.Paddock;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="T-rexes")
 public class TRex extends Dino {
 
     public TRex() {
