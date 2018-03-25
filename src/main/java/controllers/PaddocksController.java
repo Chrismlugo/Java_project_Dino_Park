@@ -94,6 +94,14 @@ public class PaddocksController {
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        post ("/paddocks/:id/delete", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Paddock paddockToDelete = DBHelper.find( Paddock.class, id);
+            DBHelper.delete(paddockToDelete);
+            res.redirect("/paddocks");
+            return null;
+        }, new VelocityTemplateEngine());
+
         post("/paddocks/:id", (req,res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -107,5 +115,7 @@ public class PaddocksController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+
     }
 }
