@@ -75,4 +75,24 @@ public abstract class Dino {
         this.belly += 1;
         getPaddock().feedDino();
     }
+
+    public String hungerLevel(){
+        String paddock = getPaddock().getName();
+        if(belly == 0){
+            return String.format( "UNSAFE:RAMPAGE IMMINENT RE-STOCK %s IMMEDIATELY", paddock);
+
+        } if(belly < 4){
+            return String.format("POTENTIALLY UNSAFE: RE-STOCK  %s ", paddock);
+
+        } if(belly >= 4){
+            return String.format( "MODERATE: check %s for RE-STOCK", paddock);
+
+        } if(belly >= 8){
+            return String.format("SAFE...");
+
+        }else{
+
+        }
+        return null;
+    }
 }

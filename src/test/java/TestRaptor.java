@@ -36,4 +36,8 @@ public class TestRaptor {
         assertEquals(9, paddock.getFood_stock());
     }
 
+    @Test
+    public void canGetHungerLevelStatus() {
+        assertEquals("UNSAFE:RAMPAGE IMMINENT RE-STOCK Raptor Paddock IMMEDIATELY", raptor.hungerLevel());
+    }
 }
