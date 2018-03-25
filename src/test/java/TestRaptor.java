@@ -33,7 +33,7 @@ public class TestRaptor {
     public void raptorCanEat() {
         raptor.eat();
         assertEquals(1, raptor.getBelly());
-        assertEquals(9, paddock.getFood_stock());
+        assertEquals(9, paddock.getFoodStock());
     }
 
     @Test
