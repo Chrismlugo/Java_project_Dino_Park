@@ -16,5 +16,6 @@ public class TRex extends Dino {
 
     public TRex(String name, SpeciesType species, Paddock paddock) {
         super(name, species, paddock);
+
     }
 }
