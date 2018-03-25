@@ -1,14 +1,14 @@
-<p class="pageHeader">Update Rex Details</p>
+<p class="pageHeader">Update Triceratops Details</p>
 
-<form action="/rexes/$rex.getId()" method="post">
+<form action="/triceratops/$tri.getId()" method="post">
     <label for="Name">Name:</label>
-    <input class="inputbox" type="text" name="Name" required="true" value="$rex.getName()">
+    <input class="inputbox" type="text" name="Name" required="true" value="$tri.getName()">
 
     <label for="species">Species:</label> <!-- NEW -->
     <select id="species" name="species">
         #foreach($species in $species)
         <option value="$species"
-                #if ($species == $rex.getSpecies())
+                #if ($species == $tri.getSpecies())
                 selected="selected"
                 #end>
             $species.getSpecies()</option>
@@ -19,7 +19,7 @@
     <select id="paddock" name="paddock">
         #foreach( $paddock in $paddocks )
         <option value="$paddock.getId()"
-                #if ($paddock.getId() == $rex.getPaddock().getId())
+                #if ($paddock.getId() == $tri.getPaddock().getId())
                 selected="selected"
                 #end>
             $paddock.getName()</option>
@@ -31,4 +31,4 @@
 
     <input type="submit" value="Save" class="button">
 </form>
-<a href="/rexes" class="button center">Cancel</a>
+<a href="/triceratops" class="button center">Cancel</a>

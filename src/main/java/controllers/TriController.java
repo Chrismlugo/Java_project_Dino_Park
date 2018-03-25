@@ -38,8 +38,8 @@ public class TriController {
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
-            SpeciesType species = SpeciesType.CARNIVORE;
-            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
+            SpeciesType species = SpeciesType.HERBIVORE;
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
             model.put("species", species);
             model.put("paddocks", paddocks);
             model.put("template", "templates/triceratops/create.vtl");
@@ -65,7 +65,7 @@ public class TriController {
             Map<String,Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
-            model.put("triceratops", tri);
+            model.put("tri", tri);
             model.put("template", "templates/triceratops/show.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
@@ -80,7 +80,7 @@ public class TriController {
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
-            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
             List<SpeciesType> species = new ArrayList<>();
             SpeciesType carn = SpeciesType.CARNIVORE;
             SpeciesType herb = SpeciesType.HERBIVORE;
@@ -88,7 +88,7 @@ public class TriController {
             species.add(herb);
             model.put("paddocks", paddocks);
             model.put("species", species);
-            model.put("triceratops", tri);
+            model.put("tri", tri);
             model.put("template", "templates/triceratops/edit.vtl");
 
             return new ModelAndView(model,"templates/layout.vtl");

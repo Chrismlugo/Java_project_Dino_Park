@@ -24,6 +24,7 @@ public class MainController {
         PaddocksController paddocksController = new PaddocksController();
         RexController rexController = new RexController();
         DiploController diploController = new DiploController();
+        TriController triController = new TriController();
 
 
         get("/", (req, res) -> {
