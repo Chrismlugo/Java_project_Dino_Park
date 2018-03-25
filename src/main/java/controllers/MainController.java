@@ -20,6 +20,7 @@ public class MainController {
 
         LoginController loginController = new LoginController();
         DinosController dinosController = new DinosController();
+        RaptorsController raptorsController = new RaptorsController();
 
 
         get("/", (req, res) -> {

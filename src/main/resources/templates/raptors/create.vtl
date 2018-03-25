@@ -1,0 +1,21 @@
+<p class="pageHeader">New Raptor</p>
+
+<form action="/raptors" method="post">
+    <label for="Name">Name:</label>
+    <input class="inputbox" type="text" name="Name" required="true">
+
+    <label for="species">Species:</label> <!-- NEW -->
+    <select id="species" name="species">
+        <option value="$species">$species.getSpecies()</option>
+    </select>
+
+    <label for="paddock">Paddock:</label> <!-- NEW -->
+    <select id="paddock" name="paddock">
+        #foreach( $paddock in $paddocks )
+        <option value="$paddock.getId()">$paddock.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/raptors" class="button center">Cancel</a>

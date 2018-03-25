@@ -2,6 +2,7 @@ package com.codeclan.db;
 
 import models.Dino;
 import models.Enums.SpeciesType;
+import models.dinosaurs.Raptor;
 import models.paddocks.Paddock;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -124,4 +125,16 @@ public class DBHelper {
         results = getList(cr);
         return results;
     }
+
+    public static List<Paddock> getPaddocksAvailableToSpecificDino(SpeciesType species, Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Paddock> results = null;
+        Criteria cr = session.createCriteria(Paddock.class);
+        cr.add(Restrictions.eq("species", species));
+        cr.add(Restrictions.eq("classType", classType));
+        results = getList(cr);
+        return results;
+    }
+
+
 }

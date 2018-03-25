@@ -16,5 +16,6 @@ public class Diplodocus extends Dino {
 
     public Diplodocus(String name, SpeciesType species, Paddock paddock) {
         super(name, species, paddock);
+
     }
 }
