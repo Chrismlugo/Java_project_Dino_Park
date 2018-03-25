@@ -1,0 +1,34 @@
+<p class="pageHeader">Update Raptor Details</p>
+
+<form action="/raptors/$raptor.getId()" method="post">
+    <label for="Name">Name:</label>
+    <input class="inputbox" type="text" name="Name" required="true" value="$raptor.getName()">
+
+    <label for="species">Species:</label> <!-- NEW -->
+    <select id="species" name="species">
+        #foreach($species in $species)
+        <option value="$species"
+                #if ($species == $raptor.getSpecies())
+                selected="selected"
+                #end>
+            $species.getSpecies()</option>
+        #end
+    </select>
+
+    <label for="paddock">Paddock:</label> <!-- NEW -->
+    <select id="paddock" name="paddock">
+        #foreach( $paddock in $paddocks )
+        <option value="$paddock.getId()"
+                #if ($paddock.getId() == $raptor.getPaddock().getId())
+                selected="selected"
+                #end>
+            $paddock.getName()</option>
+        #end
+    </select>
+
+
+
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/raptors" class="button center">Cancel</a>

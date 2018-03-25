@@ -8,6 +8,7 @@ import models.paddocks.Paddock;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,5 +56,68 @@ public class RaptorsController {
             res.redirect("/raptors");
             return null;
         }, new VelocityTemplateEngine());
+
+        get("/raptors/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Raptor raptor = DBHelper.find(Raptor.class,intId);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("raptor", raptor);
+            model.put("template", "templates/raptors/show.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/raptors/:id/edit", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Raptor raptor = DBHelper.find(Raptor.class,intId);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
+            List<SpeciesType> species = new ArrayList<>();
+            SpeciesType carn = SpeciesType.CARNIVORE;
+            SpeciesType herb = SpeciesType.HERBIVORE;
+            species.add(carn);
+            species.add(herb);
+            model.put("paddocks", paddocks);
+            model.put("species", species);
+            model.put("raptor", raptor);
+            model.put("template", "templates/raptors/edit.vtl");
+
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+            post("/raptors/:id", (req,res) ->{
+                String strId = req.params(":id");
+                Integer intId = Integer.parseInt(strId);
+                Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
+                Paddock paddock = DBHelper.find(Paddock.class,paddockId);
+                Raptor raptor = DBHelper.find(Raptor.class, intId);
+                String name = req.queryParams("Name");
+                SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
+                raptor.setName(name);
+                raptor.setSpecies(species);
+                DBHelper.saveOrUpdate(raptor);
+                res.redirect("/raptors");
+                return null;
+
+            }, new VelocityTemplateEngine());
+
+        post ("/raptors/:id/delete", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Raptor raptorToDelete = DBHelper.find( Raptor.class, id);
+            DBHelper.delete(raptorToDelete);
+            res.redirect("/raptors");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 }

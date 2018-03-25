@@ -1,0 +1,12 @@
+<div>
+    <p> Name: $raptor.getName()</p>
+    <p> Paddock: $raptor.getPaddock().getName()</p>
+    <p> Status: $raptor.hungerLevel()</p>
+
+</div>
+
+<a href="/raptors/$raptor.getId()/edit" class="button center">Edit</a>
+<form action="/raptors/$raptor.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/raptors" class="button center">Back</a>

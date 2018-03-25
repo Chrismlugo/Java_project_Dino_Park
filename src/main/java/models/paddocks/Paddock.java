@@ -23,6 +23,7 @@ public class Paddock {
         this.species = species;
         this.foodStock = 0;
         this.dinosaurs = new ArrayList<Dino>();
+
     }
 
     @Id
