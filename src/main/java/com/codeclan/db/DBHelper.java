@@ -136,5 +136,14 @@ public class DBHelper {
         return results;
     }
 
+    public static List<Dino> getDinosOfPaddock(Paddock paddock){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Dino> results = null;
+        Criteria cr = session.createCriteria(Dino.class);
+        cr.add(Restrictions.eq("paddock",paddock));
+        results = getList(cr);
+        return results;
+    }
+
 
 }
