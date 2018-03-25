@@ -1,0 +1,28 @@
+<p class="pageHeader">Triceratops</p>
+
+<div>
+    <a href="/triceratops/new" class="button center">New Triceratops</a>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+            <th>Paddock</th>
+        </tr>
+        #foreach($tri in $triceratops )
+        <tr>
+            <td>$tri.getName()</td>
+            <td>$tri.getSpecies()</td>
+            <td>$tri.getBelly()</td>
+            <td>$tri.hungerLevel()</td>
+            <td>$tri.getPaddock().getName()</td>
+            <td><a href="/triceratops/$tri.getId()" class="button center">view</a></td>
+            <td><a href="/triceratops/$tri.getId()/edit" class="button center">edit</a></td>
+            <td><a href="/triceratops/$tri.getId()/delete" class="button center">destroy</a></td>
+        </tr>
+        #end
+    </table>
+</div>
