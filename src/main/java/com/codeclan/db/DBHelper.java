@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -145,14 +146,14 @@ public class DBHelper {
         return results;
     }
 
-    public static List<Raptor> getPaddocksContainingRaptors(Class classType){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Raptor> results = null;
-        Criteria cr = session.createCriteria(Paddock.class);
-        cr.add(Restrictions.eq("raptor", Raptor.class));
-        results = getList(cr);
-        return results;
-    }
+//    public static List<Paddock> getPaddocksContainingRaptors(){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Paddock> results = null;
+//        Criteria cr = session.createCriteria(Raptor.class);
+//        cr.add(Restrictions.eq("paddock"));
+//        results = getList(cr);
+//        return results;
+//    }
 
 
 }

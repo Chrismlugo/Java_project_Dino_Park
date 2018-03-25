@@ -80,17 +80,36 @@ public class RaptorsController {
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
-            List<Paddock> paddocks = DBHelper.
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
             List<SpeciesType> species = new ArrayList<>();
             SpeciesType carn = SpeciesType.CARNIVORE;
             SpeciesType herb = SpeciesType.HERBIVORE;
             species.add(carn);
             species.add(herb);
+            model.put("paddocks", paddocks);
             model.put("species", species);
             model.put("raptor", raptor);
-            model.put("template", "templates/paddocks/edit.vtl");
+            model.put("template", "templates/raptors/edit.vtl");
 
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+            post("/raptors/:id", (req,res) ->{
+                String strId = req.params(":id");
+                Integer intId = Integer.parseInt(strId);
+                Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
+                Paddock paddock = DBHelper.find(Paddock.class,paddockId);
+                Raptor raptor = DBHelper.find(Raptor.class, intId);
+                String name = req.queryParams("Name");
+                SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
+                raptor.setName(name);
+                raptor.setSpecies(species);
+                DBHelper.saveOrUpdate(raptor);
+                res.redirect("/paddocks");
+                return null;
+
+            }, new VelocityTemplateEngine());
+
     }
 }
