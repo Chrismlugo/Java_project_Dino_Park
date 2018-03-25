@@ -12,7 +12,7 @@ public class TestDiplodocus {
 
     @Before
     public void setUp() throws Exception {
-        paddock = new Paddock("herb's green", SpeciesType.HERBIVORE,10);
+        paddock = new Paddock("herb's green", SpeciesType.HERBIVORE);
         diplodocus = new Diplodocus("Dave", SpeciesType.HERBIVORE, paddock);
     }
 

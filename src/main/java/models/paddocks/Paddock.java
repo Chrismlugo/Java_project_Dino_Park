@@ -18,7 +18,7 @@ public class Paddock {
     public Paddock() {
     }
 
-    public Paddock(String name, SpeciesType species, int foodStock) {
+    public Paddock(String name, SpeciesType species) {
         this.name = name;
         this.species = species;
         this.foodStock = 0;

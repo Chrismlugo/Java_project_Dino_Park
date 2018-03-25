@@ -1,0 +1,17 @@
+<p class="pageHeader">New Paddock</p>
+
+<form action="/paddocks" method="post">
+    <label for="Name">Name:</label>
+    <input class="inputbox" type="text" name="Name" required="true">
+
+    <label for="species">Species:</label> <!-- NEW -->
+    <select id="species" name="species">
+        #foreach($species in $species)
+        <option value="$species">$species.getSpecies()</option>
+        #end
+    </select>
+
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/paddocks" class="button center">Cancel</a>
