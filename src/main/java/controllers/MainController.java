@@ -1,4 +1,5 @@
 package controllers;
+import com.codeclan.db.Seeds;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -14,9 +15,11 @@ import static spark.SparkBase.staticFileLocation;
 public class MainController {
 
     public static void main(String[] args) {
+        Seeds.SeedData();
         staticFileLocation("/public");
 
         LoginController loginController = new LoginController();
+        DinosController dinosController = new DinosController();
 
 
         get("/", (req, res) -> {

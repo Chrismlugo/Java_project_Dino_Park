@@ -1,0 +1,21 @@
+<p class="pageHeader">All Dino's</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+            <th>Paddock</th>
+        </tr>
+        #foreach($dino in $dinosaurs )
+        <tr>
+            <td>$dino.getName()</td>
+            <td>$dino.getSpecies()</td>
+            <td>$dino.getBelly()</td>
+            <td>$dino.hungerLevel()</td>
+            <td>$dino.getPaddock().getName()</td>
+        </tr>
+        #end
+    </table>
+</div>
