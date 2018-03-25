@@ -15,11 +15,11 @@ public class Seeds {
         DBHelper.deleteAll(Triceratops.class);
         DBHelper.deleteAll(Paddock.class);
 
-        Paddock paddock1 = new Paddock("Herby's Green Patch", SpeciesType.HERBIVORE, 10);
+        Paddock paddock1 = new Paddock("Herby's Green Patch", SpeciesType.HERBIVORE);
         DBHelper.saveOrUpdate(paddock1);
-        Paddock paddock9 = new Paddock("OPEN PADDOCK 9", SpeciesType.CARNIVORE, 10);
+        Paddock paddock9 = new Paddock("OPEN PADDOCK 9", SpeciesType.CARNIVORE);
         DBHelper.saveOrUpdate(paddock9);
-        Paddock paddock3 = new Paddock("Here be Raptors", SpeciesType.CARNIVORE, 10);
+        Paddock paddock3 = new Paddock("Here be Raptors", SpeciesType.CARNIVORE);
         DBHelper.saveOrUpdate(paddock3);
 
         Diplodocus dippy1 = new Diplodocus("LittleFoot", SpeciesType.HERBIVORE, paddock1);
