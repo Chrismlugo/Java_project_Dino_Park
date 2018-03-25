@@ -1,0 +1,12 @@
+<div>
+    <p> Name: $diplo.getName()</p>
+    <p> Paddock: $diplo.getPaddock().getName()</p>
+    <p> Status: $diplo.hungerLevel()</p>
+
+</div>
+
+<a href="/diplos/$diplo.getId()/edit" class="button center">Edit</a>
+<form action="/diplos/$diplo.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/diplos" class="button center">Back</a>

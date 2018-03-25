@@ -1,0 +1,28 @@
+<p class="pageHeader">Diplos</p>
+
+<div>
+    <a href="/diplos/new" class="button center">New Diplodocus</a>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+            <th>Paddock</th>
+        </tr>
+        #foreach($diplo in $diplos )
+        <tr>
+            <td>$diplo.getName()</td>
+            <td>$diplo.getSpecies()</td>
+            <td>$diplo.getBelly()</td>
+            <td>$diplo.hungerLevel()</td>
+            <td>$diplo.getPaddock().getName()</td>
+            <td><a href="/diplos/$diplo.getId()" class="button center">view</a></td>
+            <td><a href="/diplos/$diplo.getId()/edit" class="button center">edit</a></td>
+            <td><a href="/diplos/$diplo.getId()/delete" class="button center">destroy</a></td>
+        </tr>
+        #end
+    </table>
+</div>
