@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T-rexes")
+@Table(name="rexes")
 public class TRex extends Dino {
 
     public TRex() {

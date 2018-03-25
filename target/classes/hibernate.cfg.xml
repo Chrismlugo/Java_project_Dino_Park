@@ -13,8 +13,14 @@
         <!--Change dbname as appropariate-->
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dinoparkdb</property>
         <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
+        <mapping class="models.Dino"/>
+        <mapping class="models.paddocks.Paddock"/>
+        <mapping class="models.dinosaurs.Raptor"/>
+        <mapping class="models.dinosaurs.Diplodocus"/>
+        <mapping class="models.dinosaurs.TRex"/>
+        <mapping class="models.dinosaurs.Triceratops"/>
 
 
     </session-factory>
