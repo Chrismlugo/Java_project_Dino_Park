@@ -72,5 +72,50 @@ public class PaddocksController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/paddocks/:id/edit", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class,intId);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+
+            List<SpeciesType> species = new ArrayList<>();
+            SpeciesType carn = SpeciesType.CARNIVORE;
+            SpeciesType herb = SpeciesType.HERBIVORE;
+            species.add(carn);
+            species.add(herb);
+            model.put("species", species);
+            model.put("paddock", paddock);
+            model.put("template", "templates/paddocks/edit.vtl");
+
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/paddocks/:id/delete", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Paddock paddockToDelete = DBHelper.find( Paddock.class, id);
+            DBHelper.delete(paddockToDelete);
+            res.redirect("/paddocks");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post("/paddocks/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class, intId);
+            String name = req.queryParams("Name");
+            SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
+            paddock.setName(name);
+            paddock.setSpecies(species);
+            DBHelper.saveOrUpdate(paddock);
+            res.redirect("/paddocks");
+            return null;
+
+        }, new VelocityTemplateEngine());
+
+
     }
 }
