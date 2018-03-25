@@ -62,7 +62,7 @@ public abstract class Dino {
         this.species = species;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "paddock_id", nullable = false)
     public Paddock getPaddock() {
         return paddock;

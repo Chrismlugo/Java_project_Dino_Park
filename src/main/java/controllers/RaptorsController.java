@@ -106,10 +106,18 @@ public class RaptorsController {
                 raptor.setName(name);
                 raptor.setSpecies(species);
                 DBHelper.saveOrUpdate(raptor);
-                res.redirect("/paddocks");
+                res.redirect("/raptors");
                 return null;
 
             }, new VelocityTemplateEngine());
+
+        post ("/raptors/:id/delete", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Raptor raptorToDelete = DBHelper.find( Raptor.class, id);
+            DBHelper.delete(raptorToDelete);
+            res.redirect("/raptors");
+            return null;
+        }, new VelocityTemplateEngine());
 
     }
 }
