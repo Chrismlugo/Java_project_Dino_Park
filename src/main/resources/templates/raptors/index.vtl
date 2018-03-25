@@ -1,0 +1,21 @@
+<p class="pageHeader">Raptors</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+            <th>Paddock</th>
+        </tr>
+        #foreach($raptor in $raptors )
+        <tr>
+            <td>$raptor.getName()</td>
+            <td>$raptor.getSpecies()</td>
+            <td>$raptor.getBelly()</td>
+            <td>$raptor.hungerLevel()</td>
+            <td>$raptor.getPaddock().getName()</td>
+        </tr>
+        #end
+    </table>
+</div>
