@@ -1,0 +1,12 @@
+<div>
+    <p> Name: $rex.getName()</p>
+    <p> Paddock: $rex.getPaddock().getName()</p>
+    <p> Status: $rex.hungerLevel()</p>
+
+</div>
+
+<a href="/rexes/$rex.getId()/edit" class="button center">Edit</a>
+<form action="/rexes/$rex.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/rexes" class="button center">Back</a>

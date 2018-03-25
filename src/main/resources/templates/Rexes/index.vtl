@@ -1,0 +1,28 @@
+<p class="pageHeader">Rexes</p>
+
+<div>
+    <a href="/rexes/new" class="button center">New Rex</a>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+            <th>Paddock</th>
+        </tr>
+        #foreach($rex in $rexes )
+        <tr>
+            <td>$rex.getName()</td>
+            <td>$rex.getSpecies()</td>
+            <td>$rex.getBelly()</td>
+            <td>$rex.hungerLevel()</td>
+            <td>$rex.getPaddock().getName()</td>
+            <td><a href="/rexes/$rex.getId()" class="button center">view</a></td>
+            <td><a href="/rexes/$rex.getId()/edit" class="button center">edit</a></td>
+            <td><a href="/rexes/$rex.getId()/delete" class="button center">destroy</a></td>
+        </tr>
+        #end
+    </table>
+</div>
