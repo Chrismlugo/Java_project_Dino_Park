@@ -1,6 +1,7 @@
 package controllers;
 
 import com.codeclan.db.DBHelper;
+import models.Dino;
 import models.Enums.SpeciesType;
 import models.dinosaurs.Raptor;
 import models.paddocks.Paddock;
@@ -54,6 +55,22 @@ public class PaddocksController {
             DBHelper.saveOrUpdate(paddock);
             res.redirect("/paddocks");
             return null;
+        }, new VelocityTemplateEngine());
+
+        get("/paddocks/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class,intId);
+            List<Dino> dinosaurs = DBHelper.getDinosOfPaddock(paddock);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("paddock", paddock);
+            model.put("dinosaurs", dinosaurs);
+            model.put("template", "templates/paddocks/show.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
 }
