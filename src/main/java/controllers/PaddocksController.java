@@ -61,13 +61,13 @@ public class PaddocksController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Paddock paddock = DBHelper.find(Paddock.class,intId);
-            List<Dino> dinos = DBHelper.getDinosOfPaddock(paddock);
+            List<Dino> dinosaurs = DBHelper.getDinosOfPaddock(paddock);
 
             Map<String,Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("paddock", paddock);
-            model.put("dinos", dinos);
+            model.put("dinosaurs", dinosaurs);
             model.put("template", "templates/paddocks/show.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
