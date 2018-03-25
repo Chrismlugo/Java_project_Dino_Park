@@ -21,6 +21,7 @@ public class MainController {
         LoginController loginController = new LoginController();
         DinosController dinosController = new DinosController();
         RaptorsController raptorsController = new RaptorsController();
+        PaddocksController paddocksController = new PaddocksController();
 
 
         get("/", (req, res) -> {

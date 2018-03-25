@@ -1,0 +1,19 @@
+
+<p class="pageHeader">All Paddocks</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Status</th>
+        </tr>
+        #foreach($paddock in $paddocks )
+        <tr>
+            <td>$paddock.getName()</td>
+            <td>$paddock.getSpecies()</td>
+            <td>$paddock.getFoodStock()</td>
+        </tr>
+        #end
+    </table>
+</div>

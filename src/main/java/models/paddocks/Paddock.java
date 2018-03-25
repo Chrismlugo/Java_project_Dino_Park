@@ -13,15 +13,15 @@ public class Paddock {
     private String name;
     private List<Dino> dinosaurs;
     private SpeciesType species;
-    private int food_stock;
+    private int foodStock;
 
     public Paddock() {
     }
 
-    public Paddock(String name, SpeciesType species, int food_stock) {
+    public Paddock(String name, SpeciesType species, int foodStock) {
         this.name = name;
         this.species = species;
-        this.food_stock = food_stock;
+        this.foodStock = 0;
         this.dinosaurs = new ArrayList<Dino>();
     }
 
@@ -64,16 +64,20 @@ public class Paddock {
     }
 
     @Column(name = "food_stock")
-    public int getFood_stock() {
-        return food_stock;
+    public int getFoodStock() {
+        return foodStock;
     }
 
-    public void setFood_stock(int food_stock) {
-        this.food_stock = food_stock;
+    public void setFoodStock(int food_stock) {
+        this.foodStock = foodStock;
     }
 
     public void feedDino(){
-        this.food_stock -= 1;
+        this.foodStock -= 1;
+    }
+
+    public void stockPaddock(){
+        this.foodStock += 20;
     }
 
 
