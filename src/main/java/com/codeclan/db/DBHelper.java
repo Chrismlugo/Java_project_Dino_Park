@@ -145,5 +145,14 @@ public class DBHelper {
         return results;
     }
 
+    public static List<Raptor> getPaddocksContainingRaptors(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Raptor> results = null;
+        Criteria cr = session.createCriteria(Paddock.class);
+        cr.add(Restrictions.eq("raptor", Raptor.class));
+        results = getList(cr);
+        return results;
+    }
+
 
 }
