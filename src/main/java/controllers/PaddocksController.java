@@ -72,5 +72,19 @@ public class PaddocksController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/paddocks/:id/edit", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class,intId);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("paddock", paddock);
+            model.put("template", "templates/paddocks/edit.vtl");
+
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
     }
 }
