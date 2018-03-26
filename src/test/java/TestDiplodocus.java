@@ -37,4 +37,9 @@ public class TestDiplodocus {
     public void hasInitiallyEmptyBelly() {
         assertEquals(0, diplodocus.getBelly());
     }
+
+    @Test
+    public void canFeedFromPaddock() {
+
+    }
 }

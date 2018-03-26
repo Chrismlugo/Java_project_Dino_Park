@@ -16,10 +16,10 @@ public class DinosController {
         this.setUpEndPoints();
     }
 
-    private void setUpEndPoints(){
-        get("/dinosaurs", (req,res) ->{
-            HashMap<String,Object> model = new HashMap<>();
-            String loggedInUser = LoginController.getLoggedInUserName(req,res);
+    private void setUpEndPoints() {
+        get("/dinosaurs", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             List<Dino> dinosaurs = DBHelper.getAll(Dino.class);
             model.put("dinosaurs", dinosaurs);
@@ -27,5 +27,7 @@ public class DinosController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
     }
+
 }

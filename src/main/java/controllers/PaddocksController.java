@@ -69,6 +69,8 @@ public class PaddocksController {
             Paddock paddock = DBHelper.find(Paddock.class,intId);
             paddock.setFoodStock(20);
             DBHelper.saveOrUpdate(paddock);
+            paddock.feedDinos();
+            DBHelper.saveOrUpdate(paddock);
             res.redirect("/paddocks");
             return null;
 
@@ -143,7 +145,6 @@ public class PaddocksController {
             return null;
 
         }, new VelocityTemplateEngine());
-
 
 
 

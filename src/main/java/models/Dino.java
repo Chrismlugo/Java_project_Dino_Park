@@ -1,5 +1,6 @@
 package models;
 
+import com.codeclan.db.DBHelper;
 import models.Enums.SpeciesType;
 import models.paddocks.Paddock;
 
@@ -22,6 +23,7 @@ public abstract class Dino {
         this.species = species;
         this.paddock = paddock;
         this.belly = 0;
+
     }
 
     @Id
@@ -73,14 +75,16 @@ public abstract class Dino {
     }
 
     public void eat() {
-        this.belly += 1;
-        getPaddock().feedDino();
+        if(paddock.getFoodStock() > 0){
+            this.belly += 1;
+        }
+
     }
 
     public String hungerLevel(){
         String paddock = getPaddock().getName();
         if(belly == 0){
-            return String.format( "UNSAFE:RAMPAGE IMMINENT RE-STOCK %s IMMEDIATELY", paddock);
+            return String.format( "UNSAFE: RE-STOCK %s IMMEDIATELY", paddock);
 
         } if(belly < 4){
             return String.format("POTENTIALLY UNSAFE: RE-STOCK  %s ", paddock);

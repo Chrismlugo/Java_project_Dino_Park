@@ -1,11 +1,14 @@
 package com.codeclan.db;
 
+import models.Dino;
 import models.Enums.SpeciesType;
 import models.dinosaurs.Diplodocus;
 import models.dinosaurs.Raptor;
 import models.dinosaurs.TRex;
 import models.dinosaurs.Triceratops;
 import models.paddocks.Paddock;
+
+import java.util.List;
 
 public class Seeds {
     public static void SeedData() {
@@ -40,5 +43,7 @@ public class Seeds {
         DBHelper.saveOrUpdate(raptor3);
         Raptor raptor4 = new Raptor("Echo", SpeciesType.CARNIVORE, paddock3);
         DBHelper.saveOrUpdate(raptor4);
+
+
     }
 }
