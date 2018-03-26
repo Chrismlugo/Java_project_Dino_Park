@@ -71,7 +71,7 @@ public class Paddock {
     }
 
     public void setFoodStock(int food_stock) {
-        this.foodStock = foodStock;
+        this.foodStock = food_stock;
     }
 
     public void feedDino(){
