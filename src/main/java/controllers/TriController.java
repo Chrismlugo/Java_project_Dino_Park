@@ -144,7 +144,7 @@ public class TriController {
             Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
             Paddock paddock = DBHelper.find(Paddock.class,paddockId);
             Triceratops tri = DBHelper.find(Triceratops.class, intId);
-            String name = req.queryParams("name");
+            String name = req.queryParams("Name");
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             tri.setName(name);
             tri.setSpecies(species);
