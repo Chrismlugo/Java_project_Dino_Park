@@ -125,12 +125,33 @@ public class TriController {
             Triceratops tri = DBHelper.find(Triceratops.class,intId);
 
             List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
+            List<SpeciesType> species = new ArrayList<>();
+            SpeciesType herb = SpeciesType.HERBIVORE;
+            species.add(herb);
             Map<String,Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
+            model.put("tri", tri);
+            model.put("species", species);
             model.put("paddocks", paddocks);
             model.put("template", "templates/triceratops/transfer.vtl");
             return  new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/triceratops/transfer/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
+            Paddock paddock = DBHelper.find(Paddock.class,paddockId);
+            Triceratops tri = DBHelper.find(Triceratops.class, intId);
+            String name = req.queryParams("name");
+            SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
+            tri.setName(name);
+            tri.setSpecies(species);
+            tri.setPaddock(paddock);
+            DBHelper.saveOrUpdate(tri);
+            res.redirect("/triceratops");
+            return null;
         }, new VelocityTemplateEngine());
 
 
