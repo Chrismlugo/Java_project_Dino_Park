@@ -120,7 +120,7 @@ public class DiploController {
         get("/diplos/transfer/:id", (req,res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Diplodocus dip = DBHelper.find(Diplodocus.class,intId);
+            Diplodocus diplo = DBHelper.find(Diplodocus.class,intId);
 
             List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
             List<SpeciesType> species = new ArrayList<>();
@@ -129,7 +129,7 @@ public class DiploController {
             Map<String,Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
-            model.put("dip", dip);
+            model.put("diplo", diplo);
             model.put("species", species);
             model.put("paddocks", paddocks);
             model.put("template", "templates/diplos/transfer.vtl");
@@ -141,13 +141,13 @@ public class DiploController {
             Integer intId = Integer.parseInt(strId);
             Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
             Paddock paddock = DBHelper.find(Paddock.class,paddockId);
-            Diplodocus dip = DBHelper.find(Diplodocus.class, intId);
+            Diplodocus diplo = DBHelper.find(Diplodocus.class, intId);
             String name = req.queryParams("Name");
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
-            dip.setName(name);
-            dip.setSpecies(species);
-            dip.setPaddock(paddock);
-            DBHelper.saveOrUpdate(dip);
+            diplo.setName(name);
+            diplo.setSpecies(species);
+            diplo.setPaddock(paddock);
+            DBHelper.saveOrUpdate(diplo);
             res.redirect("/diplos");
             return null;
         }, new VelocityTemplateEngine());
