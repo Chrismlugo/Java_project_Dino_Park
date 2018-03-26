@@ -1,0 +1,36 @@
+<p class="pageHeader">Dino Transfer: $diplo.getName()</p>
+
+
+<form action="/diplos/transfer/$diplo.getId()" method="post">
+    <label for="Name">Name:</label>
+    <input class="inputbox" type="text" name="Name" required="true" value="$diplo.getName()">
+
+    <label for="species">Species:</label> <!-- NEW -->
+    <select id="species" name="species">
+        #foreach($species in $species)
+        #if ($species == $diplo.getSpecies())
+        <option value="$species"
+                selected="selected"
+                #end>
+            $species.getSpecies()</option>
+        #end
+    </select>
+
+
+    <label for="paddock">Paddock:</label> <!-- NEW -->
+    <select id="paddock" name="paddock">
+        #foreach( $paddock in $paddocks )
+        #if ($paddock.getId() != $diplo.getPaddock().getId())
+        <option value="$paddock.getId()"
+                selected="selected"
+                #end>
+            $paddock.getName()</option>
+        #end
+    </select>
+
+
+
+
+    <input type="submit" value="Confirm" class="button">
+</form>
+<a href="/diplos" class="button center">Cancel</a>
