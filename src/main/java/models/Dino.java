@@ -22,6 +22,7 @@ public abstract class Dino {
         this.species = species;
         this.paddock = paddock;
         this.belly = 0;
+
     }
 
     @Id
@@ -73,8 +74,10 @@ public abstract class Dino {
     }
 
     public void eat() {
-        this.belly += 1;
-        getPaddock().feedDino();
+        if(paddock.getFoodStock() > 0){
+            this.belly += 1;
+        }
+
     }
 
     public String hungerLevel(){
