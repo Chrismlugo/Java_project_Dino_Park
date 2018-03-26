@@ -119,6 +119,20 @@ public class TriController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/triceratops/transfer/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Triceratops tri = DBHelper.find(Triceratops.class,intId);
+
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("paddocks", paddocks);
+            model.put("template", "templates/triceratops/transfer.vtl");
+            return  new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
     }
 }
