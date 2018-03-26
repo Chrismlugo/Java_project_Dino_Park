@@ -3,6 +3,7 @@ package com.codeclan.db;
 import models.Dino;
 import models.Enums.SpeciesType;
 import models.dinosaurs.Raptor;
+import models.dinosaurs.TRex;
 import models.paddocks.Paddock;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -106,6 +107,7 @@ public class DBHelper {
     public static <T>List<T> getAll(Class classType){
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria cr = session.createCriteria(classType);
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return getList(cr);
     }
 
@@ -146,14 +148,8 @@ public class DBHelper {
         return results;
     }
 
-//    public static List<Paddock> getPaddocksContainingRaptors(){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Paddock> results = null;
-//        Criteria cr = session.createCriteria(Raptor.class);
-//        cr.add(Restrictions.eq("paddock"));
-//        results = getList(cr);
-//        return results;
-//    }
+
+
 
 
 }

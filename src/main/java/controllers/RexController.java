@@ -83,9 +83,7 @@ public class RexController {
             List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
             List<SpeciesType> species = new ArrayList<>();
             SpeciesType carn = SpeciesType.CARNIVORE;
-            SpeciesType herb = SpeciesType.HERBIVORE;
             species.add(carn);
-            species.add(herb);
             model.put("paddocks", paddocks);
             model.put("species", species);
             model.put("rex", rex);
@@ -93,6 +91,7 @@ public class RexController {
 
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
 
 
         post("/rexes/:id", (req,res) ->{
