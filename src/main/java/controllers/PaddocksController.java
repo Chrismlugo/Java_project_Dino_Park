@@ -8,6 +8,7 @@ import models.paddocks.Paddock;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +47,31 @@ public class PaddocksController {
             model.put("species", species);
             model.put("template", "templates/paddocks/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/paddocks/:id/restock", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class,intId);
+
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("paddock", paddock);
+            model.put("template", "templates/paddocks/restock.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/paddocks/restock/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Paddock paddock = DBHelper.find(Paddock.class,intId);
+            paddock.setFoodStock(20);
+            DBHelper.saveOrUpdate(paddock);
+            res.redirect("/paddocks");
+            return null;
+
         }, new VelocityTemplateEngine());
 
         post ("/paddocks", (req, res) -> {
@@ -102,6 +128,8 @@ public class PaddocksController {
             return null;
         }, new VelocityTemplateEngine());
 
+
+
         post("/paddocks/:id", (req,res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -115,6 +143,8 @@ public class PaddocksController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+
 
 
     }

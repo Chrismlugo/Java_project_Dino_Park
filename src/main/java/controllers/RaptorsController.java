@@ -83,9 +83,7 @@ public class RaptorsController {
             List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.CARNIVORE);
             List<SpeciesType> species = new ArrayList<>();
             SpeciesType carn = SpeciesType.CARNIVORE;
-            SpeciesType herb = SpeciesType.HERBIVORE;
             species.add(carn);
-            species.add(herb);
             model.put("paddocks", paddocks);
             model.put("species", species);
             model.put("raptor", raptor);

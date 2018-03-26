@@ -16,6 +16,8 @@ public class Paddock {
     private int foodStock;
 
     public Paddock() {
+        this.foodStock = 0;
+        this.dinosaurs = new ArrayList<Dino>();
     }
 
     public Paddock(String name, SpeciesType species) {
@@ -23,7 +25,6 @@ public class Paddock {
         this.species = species;
         this.foodStock = 0;
         this.dinosaurs = new ArrayList<Dino>();
-
     }
 
     @Id
@@ -46,7 +47,7 @@ public class Paddock {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "paddock")
+    @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
     public List<Dino> getDinosaurs() {
         return dinosaurs;
     }

@@ -22,6 +22,8 @@ public class Seeds {
         Paddock paddock3 = new Paddock("Here be Raptors", SpeciesType.CARNIVORE);
         DBHelper.saveOrUpdate(paddock3);
 
+        Paddock foundPaddock = DBHelper.find(Paddock.class, paddock1.getId());
+
         Diplodocus dippy1 = new Diplodocus("LittleFoot", SpeciesType.HERBIVORE, paddock1);
         DBHelper.saveOrUpdate(dippy1);
         Triceratops tri1 = new Triceratops("Cera", SpeciesType.HERBIVORE, paddock1);
