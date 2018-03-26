@@ -4,6 +4,7 @@ import com.codeclan.db.DBHelper;
 import models.Enums.SpeciesType;
 import models.dinosaurs.Diplodocus;
 import models.dinosaurs.TRex;
+import models.dinosaurs.Triceratops;
 import models.paddocks.Paddock;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -112,6 +113,41 @@ public class DiploController {
             Integer id = Integer.parseInt(req.params(":id"));
             Diplodocus diploToDelete = DBHelper.find( Diplodocus.class, id);
             DBHelper.delete(diploToDelete);
+            res.redirect("/diplos");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        get("/diplos/transfer/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Diplodocus dip = DBHelper.find(Diplodocus.class,intId);
+
+            List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
+            List<SpeciesType> species = new ArrayList<>();
+            SpeciesType herb = SpeciesType.HERBIVORE;
+            species.add(herb);
+            Map<String,Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("dip", dip);
+            model.put("species", species);
+            model.put("paddocks", paddocks);
+            model.put("template", "templates/diplos/transfer.vtl");
+            return  new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/triceratops/transfer/:id", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
+            Paddock paddock = DBHelper.find(Paddock.class,paddockId);
+            Diplodocus dip = DBHelper.find(Diplodocus.class, intId);
+            String name = req.queryParams("Name");
+            SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
+            dip.setName(name);
+            dip.setSpecies(species);
+            dip.setPaddock(paddock);
+            DBHelper.saveOrUpdate(dip);
             res.redirect("/diplos");
             return null;
         }, new VelocityTemplateEngine());
