@@ -25,6 +25,7 @@ public class MainController {
         RexController rexController = new RexController();
         DiploController diploController = new DiploController();
         TriController triController = new TriController();
+        RampageController rampageController = new RampageController();
 
 
         get("/", (req, res) -> {
