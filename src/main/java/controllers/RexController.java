@@ -118,6 +118,5 @@ public class RexController {
             return null;
         }, new VelocityTemplateEngine());
 
-
     }
 }
