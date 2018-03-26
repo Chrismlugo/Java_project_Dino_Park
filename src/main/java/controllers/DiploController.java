@@ -136,7 +136,7 @@ public class DiploController {
             return  new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/triceratops/transfer/:id", (req,res) ->{
+        post("/diplos/transfer/:id", (req,res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Integer paddockId = Integer.parseInt(req.queryParams("paddock"));
