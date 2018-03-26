@@ -1,5 +1,6 @@
 package models.paddocks;
 
+import com.codeclan.db.DBHelper;
 import models.Dino;
 import models.Enums.SpeciesType;
 
@@ -74,8 +75,19 @@ public class Paddock {
         this.foodStock = food_stock;
     }
 
-    public void feedDino(){
-        this.foodStock -= 1;
+    public void feedDinos(){
+        for(Dino dino: this.dinosaurs){
+            if(this.foodStock > 0) {
+                int belly = dino.getBelly();
+                int food = belly + 1;
+                int intake = belly + food;
+                dino.setBelly(intake);
+                this.foodStock -= food;
+                DBHelper.saveOrUpdate(dino);
+            }
+
+
+        }
     }
 
     public void stockPaddock(){
