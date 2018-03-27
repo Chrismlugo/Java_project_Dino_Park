@@ -4,6 +4,7 @@ import com.codeclan.db.DBHelper;
 import models.Dino;
 import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
+import models.Park;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Paddock {
     private SpeciesType species;
     private ArrayList<DinoFood> foodStock;
     private boolean paddockSecure;
+    private Park park;
 
     public Paddock() {}
 
@@ -26,6 +28,7 @@ public class Paddock {
         this.foodStock = new ArrayList<>();
         this.dinosaurs = new ArrayList<>();
         this.paddockSecure = true;
+        this.park = park;
     }
 
     @Id
@@ -106,13 +109,20 @@ public class Paddock {
     }
 
     public void breakout(){
-        List<Dino>  rampagers = new ArrayList<>();
+
         if(this.paddockSecure == false){
-            rampagers = dinosaurs;
+            park.setRampagers(dinosaurs);
         }
         dinosaurs.clear();
     }
 
+    @ManyToOne
+    @JoinColumn(name = "park_id", nullable = true)
+    public Park getPark() {
+        return park;
+    }
 
-
+    public void setPark(Park park) {
+        this.park = park;
+    }
 }
