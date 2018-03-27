@@ -63,7 +63,7 @@ public abstract class Dino {
     }
 
     public void feed(DinoFood food) {
-        if(this.belly.size() < this.getStomachCapcity()){
+        if(this.belly.size() < this.getStomachCapacity()){
         this.belly.add(food);
         }
     }
@@ -98,38 +98,38 @@ public abstract class Dino {
 
 
 
-    public int getStomachCapcity() {
+    public int getStomachCapacity() {
         return this.stomachSize.getSize();
     }
 
 
-    public String hungerLevel() {
-        String paddock = getPaddock().getName();
-        String transfer = "or check for paddock transfer";
-        if (belly == 0) {
-            if (species == SpeciesType.HERBIVORE) {
-                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
-            }
-
-            return String.format("Unhealthy: Check %s food store ", paddock);
-
-        }
-        if (belly < 4) {
-
-            return String.format("Potential Health Risk: check food store in  %s ", paddock);
-
-        }
-        if (belly >= 4) {
-            return String.format("Moderately healthy: check %s ", paddock);
-
-        }
-        if (belly >= 5) {
-            return String.format("Healthy");
-
-        } else {
-
-        }
-        return null;
-
-    }
+//    public String hungerLevel() {
+//        String paddock = getPaddock().getName();
+//        String transfer = "or check for paddock transfer";
+//        if (belly == 0) {
+//            if (species == SpeciesType.HERBIVORE) {
+//                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
+//            }
+//
+//            return String.format("Unhealthy: Check %s food store ", paddock);
+//
+//        }
+//        if (belly < 4) {
+//
+//            return String.format("Potential Health Risk: check food store in  %s ", paddock);
+//
+//        }
+//        if (belly >= 4) {
+//            return String.format("Moderately healthy: check %s ", paddock);
+//
+//        }
+//        if (belly >= 5) {
+//            return String.format("Healthy");
+//
+//        } else {
+//
+//        }
+//        return null;
+//
+//    }
 }

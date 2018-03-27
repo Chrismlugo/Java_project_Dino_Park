@@ -39,4 +39,4 @@ public class TestPaddock {
         paddock.breakout();
         assertEquals(0, paddock.countDinosaurs());
     }
-}
+

@@ -51,7 +51,7 @@ public class TriController {
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             String name = req.queryParams("Name");
-            Triceratops tri = new Triceratops(name,species,paddock);
+            Triceratops tri = new Triceratops(name,paddock);
             DBHelper.saveOrUpdate(tri);
             res.redirect("/triceratops");
             return null;
