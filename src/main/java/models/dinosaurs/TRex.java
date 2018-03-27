@@ -37,6 +37,10 @@ public class TRex extends Dino {
         this.rampageStates = rampageStates;
     }
 
+    public void damagePaddock(){
+        getPaddock().setPaddockSecure(false);
+    }
+
     public void rampage() {
         for (DinoFood food : this.getBelly()) {
             if (food.getFoodType().getType() != "meatylicious") ;
