@@ -1,6 +1,7 @@
 package models.dinosaurs;
 
 import models.Dino;
+import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 import models.paddocks.Paddock;
 
@@ -35,9 +36,13 @@ public class TRex extends Dino {
         this.rampageStates = rampageStates;
     }
 
-    public String rampage(){
-        Collections.shuffle(this.rampageStates);
-        return rampageStates.get(0);
+    public void rampage() {
+        for (DinoFood food : this.getBelly()) {
+            if (food.getFoodType().getType() != "meatylicious") ;
+            {
+                damagePaddock();
+            }
+        }
     }
 
 }
