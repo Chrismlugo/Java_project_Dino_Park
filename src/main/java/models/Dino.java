@@ -81,23 +81,33 @@ public abstract class Dino {
 
     }
 
-    public String hungerLevel(){
+    public String hungerLevel() {
         String paddock = getPaddock().getName();
-        if(belly == 0){
-            return String.format( "UNSAFE: RE-STOCK %s IMMEDIATELY", paddock);
+        String transfer = "or check for paddock transfer";
+        if (belly == 0) {
+            if (species == SpeciesType.HERBIVORE) {
+                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
+            }
 
-        } if(belly < 4){
-            return String.format("POTENTIALLY UNSAFE: RE-STOCK  %s ", paddock);
+            return String.format("Unhealthy: Check %s food store ", paddock);
 
-        } if(belly >= 4){
-            return String.format( "MODERATE: check %s for RE-STOCK", paddock);
+        }
+        if (belly < 4) {
 
-        } if(belly >= 8){
-            return String.format("SAFE...");
+            return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
-        }else{
+        }
+        if (belly >= 4) {
+            return String.format("Moderately healthy: check %s ", paddock);
+
+        }
+        if (belly >= 5) {
+            return String.format("Healthy");
+
+        } else {
 
         }
         return null;
+
     }
 }
