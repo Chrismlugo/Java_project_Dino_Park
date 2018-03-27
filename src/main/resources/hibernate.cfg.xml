@@ -21,6 +21,7 @@
         <mapping class="models.dinosaurs.Diplodocus"/>
         <mapping class="models.dinosaurs.TRex"/>
         <mapping class="models.dinosaurs.Triceratops"/>
+        <mapping class="models.visitor.Visitor"/>
 
 
     </session-factory>
