@@ -1,4 +1,4 @@
-package models.Visitor;
+package models.visitor;
 
 import javax.persistence.*;
 
