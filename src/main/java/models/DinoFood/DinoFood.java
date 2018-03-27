@@ -8,4 +8,12 @@ public class DinoFood {
     public DinoFood() {
         this.foodType = foodType;
     }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
 }
