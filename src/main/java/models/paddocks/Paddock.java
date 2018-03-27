@@ -3,11 +3,15 @@ package models.paddocks;
 import com.codeclan.db.DBHelper;
 import models.Dino;
 import models.DinoFood.DinoFood;
+import models.Enums.FoodType;
 import models.Enums.SpeciesType;
 import models.Park;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 @Entity
 @Table(name="paddocks")
@@ -51,7 +55,8 @@ public class Paddock {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "paddock", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "paddock")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Dino> getDinosaurs() {
         return dinosaurs;
     }
@@ -84,15 +89,19 @@ public class Paddock {
                 DinoFood intake = this.foodStock.remove(0);
                 dino.feed(intake);
                 DBHelper.saveOrUpdate(dino);
+
             }
         }
     }
 
     public void stockPaddock(){
-        for(int i = 0; i < 20; i++){
-        DinoFood dinoFood = new DinoFood();
-        this.foodStock.add(dinoFood);
-    }
+        for(int i = 0; i < 5; i++){
+            for(FoodType foodType : FoodType.values()){
+                DinoFood dinofood = new DinoFood(foodType);
+                this.foodStock.add(dinofood);
+
+            }
+    } Collections.shuffle(this.foodStock);
 }
 
     public boolean isPaddockSecure() {
@@ -112,6 +121,7 @@ public class Paddock {
 
         if(this.paddockSecure == false){
             park.setRampagers(dinosaurs);
+
         }
         dinosaurs.clear();
     }

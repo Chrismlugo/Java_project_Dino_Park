@@ -18,12 +18,11 @@ public class TestPaddock {
     public void setUp() throws Exception {
         paddock = new Paddock("Boneyard", SpeciesType.CARNIVORE);
         dino = new TRex();
-        food = new DinoFood();
+        food = new DinoFood(FoodType.VEGETARIAN);
         food.setFoodType(FoodType.VEGETARIAN);
         paddock.getDinosaurs().add(dino);
         dino.getBelly().add(food);
     }
-
 
 
     @Test
@@ -39,4 +38,5 @@ public class TestPaddock {
         paddock.breakout();
         assertEquals(0, paddock.countDinosaurs());
     }
+}
 

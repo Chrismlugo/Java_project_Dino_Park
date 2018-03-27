@@ -5,6 +5,8 @@ import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.paddocks.Paddock;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.lang.reflect.Array;
@@ -16,7 +18,7 @@ import java.util.List;
 public abstract class Dino {
     private int id;
     private String name;
-    private ArrayList<DinoFood> belly;
+    private List<DinoFood> belly;
     private SpeciesType species;
     private Paddock paddock;
     private StomachSize stomachSize;
@@ -53,17 +55,21 @@ public abstract class Dino {
         this.name = name;
     }
 
-    @Column(name = "belly")
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(name = "dino_food",
+            joinColumns = {@JoinColumn(name = "dino_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "food_id", nullable = false, updatable = false)})
     public List<DinoFood> getBelly() {
         return belly;
     }
 
-    public void setBelly(ArrayList<DinoFood> belly) {
+    public void setBelly(List<DinoFood> belly) {
         this.belly = belly;
     }
 
     public void feed(DinoFood food) {
-        if(this.belly.size() < this.getStomachCapacity()){
+        if(this.belly.size() < this.stomachCapacity()){
         this.belly.add(food);
         }
     }
@@ -98,38 +104,40 @@ public abstract class Dino {
 
 
 
-    public int getStomachCapacity() {
+    public int stomachCapacity() {
         return this.stomachSize.getSize();
     }
 
 
-//    public String hungerLevel() {
-//        String paddock = getPaddock().getName();
-//        String transfer = "or check for paddock transfer";
-//        if (belly == 0) {
-//            if (species == SpeciesType.HERBIVORE) {
-//                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
-//            }
-//
-//            return String.format("Unhealthy: Check %s food store ", paddock);
-//
-//        }
-//        if (belly < 4) {
-//
-//            return String.format("Potential Health Risk: check food store in  %s ", paddock);
-//
-//        }
-//        if (belly >= 4) {
-//            return String.format("Moderately healthy: check %s ", paddock);
-//
-//        }
-//        if (belly >= 5) {
-//            return String.format("Healthy");
-//
-//        } else {
-//
-//        }
-//        return null;
-//
-//    }
+
+
+    public String hungerLevel() {
+        String paddock = getPaddock().getName();
+        String transfer = "or check for paddock transfer";
+        if (belly.size() == 0) {
+            if (species == SpeciesType.HERBIVORE) {
+                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
+            }
+
+            return String.format("Unhealthy: Check %s food store ", paddock);
+
+        }
+        if (belly.size() < 4) {
+
+            return String.format("Potential Health Risk: check food store in  %s ", paddock);
+
+        }
+        if (belly.size() >= 4) {
+            return String.format("Moderately healthy: check %s ", paddock);
+
+        }
+        if (belly.size() >= 5) {
+            return String.format("Healthy");
+
+        } else {
+
+        }
+        return null;
+
+    }
 }

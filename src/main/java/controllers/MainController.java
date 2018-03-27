@@ -1,5 +1,7 @@
 package controllers;
+import com.codeclan.db.DBHelper;
 import com.codeclan.db.Seeds;
+import models.Park;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -30,11 +32,14 @@ public class MainController {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            Park park = DBHelper.find(Park.class,1);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("park", park);
             model.put("user", loggedInUser);
             model.put("template","templates/main.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
     }
 }
