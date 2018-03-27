@@ -106,7 +106,7 @@ public abstract class Dino {
     public String hungerLevel() {
         String paddock = getPaddock().getName();
         String transfer = "or check for paddock transfer";
-        if (belly == 0) {
+        if (belly.size() == 0) {
             if (species == SpeciesType.HERBIVORE) {
                 return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
             }
@@ -114,16 +114,16 @@ public abstract class Dino {
             return String.format("Unhealthy: Check %s food store ", paddock);
 
         }
-        if (belly < 4) {
+        if (belly.size() < 4) {
 
             return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
         }
-        if (belly >= 4) {
+        if (belly.size() >= 4) {
             return String.format("Moderately healthy: check %s ", paddock);
 
         }
-        if (belly >= 5) {
+        if (belly.size() >= 5) {
             return String.format("Healthy");
 
         } else {
