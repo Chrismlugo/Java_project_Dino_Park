@@ -31,9 +31,7 @@ public class TestRaptor {
 
     @Test
     public void raptorCanEat() {
-        raptor.eat();
-        assertEquals(1, raptor.getBelly());
-        assertEquals(9, paddock.getFoodStock(), 1);
+
     }
 
     @Test
