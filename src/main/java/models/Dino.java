@@ -1,28 +1,35 @@
 package models;
 
 import com.codeclan.db.DBHelper;
+import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
+import models.Enums.StomachSize;
 import models.paddocks.Paddock;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Dino {
     private int id;
     private String name;
-    private int belly;
+    private ArrayList<DinoFood> belly;
     private SpeciesType species;
     private Paddock paddock;
+    private StomachSize stomachSize;
 
     public Dino() {
     }
 
-    public Dino(String name, SpeciesType species, Paddock paddock) {
+    public Dino(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
         this.name = name;
         this.species = species;
         this.paddock = paddock;
-        this.belly = 0;
+        this.belly = new ArrayList<>();
+        this.stomachSize = stomachSize;
 
     }
 
@@ -46,13 +53,19 @@ public abstract class Dino {
         this.name = name;
     }
 
-    @Column(name = "hunger")
-    public int getBelly() {
+    @Column(name = "belly")
+    public List<DinoFood> getBelly() {
         return belly;
     }
 
-    public void setBelly(int belly) {
+    public void setBelly(ArrayList<DinoFood> belly) {
         this.belly = belly;
+    }
+
+    public void feed(DinoFood food) {
+        if(this.belly.size() < this.getStomachCapcity()){
+        this.belly.add(food);
+        }
     }
 
     @Column(name = "species")
@@ -62,6 +75,15 @@ public abstract class Dino {
 
     public void setSpecies(SpeciesType species) {
         this.species = species;
+    }
+
+    @Column(name= "stomach_size")
+    public StomachSize getStomachSize() {
+        return stomachSize;
+    }
+
+    public void setStomachSize(StomachSize stomachSize) {
+        this.stomachSize = stomachSize;
     }
 
     @ManyToOne
@@ -74,12 +96,12 @@ public abstract class Dino {
         this.paddock = paddock;
     }
 
-    public void eat() {
-        if(paddock.getFoodStock() > 0){
-            this.belly += 1;
-        }
 
+
+    public int getStomachCapcity() {
+        return this.stomachSize.getSize();
     }
+
 
     public String hungerLevel() {
         String paddock = getPaddock().getName();

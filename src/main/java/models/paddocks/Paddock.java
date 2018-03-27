@@ -2,6 +2,7 @@ package models.paddocks;
 
 import com.codeclan.db.DBHelper;
 import models.Dino;
+import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 
 import javax.persistence.*;
@@ -14,17 +15,14 @@ public class Paddock {
     private String name;
     private List<Dino> dinosaurs;
     private SpeciesType species;
-    private int foodStock;
+    private ArrayList<DinoFood> foodStock;
 
-    public Paddock() {
-        this.foodStock = 0;
-        this.dinosaurs = new ArrayList<Dino>();
-    }
+    public Paddock() {}
 
     public Paddock(String name, SpeciesType species) {
         this.name = name;
         this.species = species;
-        this.foodStock = 0;
+        this.foodStock = new ArrayList<>();
         this.dinosaurs = new ArrayList<Dino>();
     }
 
@@ -66,33 +64,31 @@ public class Paddock {
         this.species = species;
     }
 
-    @Column(name = "food_stock")
-    public int getFoodStock() {
+    @Column(name="foodStock")
+    public ArrayList<DinoFood> getFoodStock() {
         return foodStock;
     }
 
-    public void setFoodStock(int food_stock) {
-        this.foodStock = food_stock;
+    public void setFoodStock(ArrayList<DinoFood> foodStock) {
+        this.foodStock = foodStock;
     }
 
     public void feedDinos(){
         for(Dino dino: this.dinosaurs){
-            if(this.foodStock > 0) {
-                int belly = dino.getBelly();
-                int food = belly + 1;
-                int intake = belly + food;
-                dino.setBelly(intake);
-                this.foodStock -= food;
+            if(this.foodStock.size() > 0) {
+                DinoFood intake = this.foodStock.remove(0);
+                dino.feed(intake);
                 DBHelper.saveOrUpdate(dino);
             }
-
-
         }
     }
 
     public void stockPaddock(){
-        this.foodStock += 20;
+        for(int i = 0; i < 20; i++){
+        DinoFood dinoFood = new DinoFood();
+        this.foodStock.add(dinoFood);
     }
+}
 
 
 
