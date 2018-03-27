@@ -2,6 +2,7 @@ package models.dinosaurs;
 
 import models.Dino;
 import models.Enums.SpeciesType;
+import models.Enums.StomachSize;
 import models.paddocks.Paddock;
 
 import javax.persistence.Entity;
@@ -14,8 +15,12 @@ public class Raptor extends Dino {
     public Raptor() {
     }
 
-    public Raptor(String name, SpeciesType species, Paddock paddock) {
-        super(name, species, paddock);
+    public Raptor(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
+        super(name, species, paddock, stomachSize);
+        this.setSpecies(SpeciesType.CARNIVORE);
+        this.setStomachSize(StomachSize.SMALL);
     }
+
+
 
 }

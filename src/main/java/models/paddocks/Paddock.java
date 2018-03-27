@@ -16,6 +16,7 @@ public class Paddock {
     private List<Dino> dinosaurs;
     private SpeciesType species;
     private ArrayList<DinoFood> foodStock;
+    private boolean paddockSecure;
 
     public Paddock() {}
 
@@ -24,6 +25,7 @@ public class Paddock {
         this.species = species;
         this.foodStock = new ArrayList<>();
         this.dinosaurs = new ArrayList<Dino>();
+        this.paddockSecure = true;
     }
 
     @Id
@@ -91,5 +93,11 @@ public class Paddock {
 }
 
 
+    public boolean isPaddockSecure() {
+        return paddockSecure;
+    }
 
+    public void setPaddockSecure(boolean paddockSecure) {
+        this.paddockSecure = paddockSecure;
+    }
 }
