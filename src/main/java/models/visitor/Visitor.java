@@ -1,18 +1,22 @@
 package models.visitor;
 
+import models.Park;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "visitors")
 public class Visitor {
-    int id;
-    String name;
+   private int id;
+   private Park park;
+   private String name;
 
     public Visitor() {
     }
 
     public Visitor(String name) {
         this.name = name;
+        this.park = park;
     }
 
     @Id
@@ -32,5 +36,15 @@ public class Visitor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "park_id", nullable = false)
+    public Park getPark() {
+        return park;
+    }
+
+    public void setPark(Park park) {
+        this.park = park;
     }
 }
