@@ -51,7 +51,7 @@ public class DiploController {
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             String name = req.queryParams("Name");
-            Diplodocus diplo = new Diplodocus(name,species,paddock);
+            Diplodocus diplo = new Diplodocus(name,paddock);
             DBHelper.saveOrUpdate(diplo);
             res.redirect("/diplos");
             return null;

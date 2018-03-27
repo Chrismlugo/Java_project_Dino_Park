@@ -51,7 +51,7 @@ public class RaptorsController {
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             String name = req.queryParams("Name");
-            Raptor raptor = new Raptor(name,species,paddock);
+            Raptor raptor = new Raptor(name,paddock);
             DBHelper.saveOrUpdate(raptor);
             res.redirect("/raptors");
             return null;

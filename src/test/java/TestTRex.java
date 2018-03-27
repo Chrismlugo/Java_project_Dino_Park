@@ -16,14 +16,14 @@ public class TestTRex {
     public void before() {
 
         paddock = new Paddock("Paddock 9", SpeciesType.CARNIVORE);
-        tRex = new TRex("Biggy Smalls", SpeciesType.CARNIVORE, paddock);
+        tRex = new TRex("Biggy Smalls",paddock);
     }
-
-    @Test
-    public void tRexCanRampage() {
-        tRex.addRampageStates("mental");
-        tRex.addRampageStates("quite miffed");
-        assert(tRex.getRampageStates().contains(tRex.rampage()));
-    }
+//
+//    @Test
+//    public void tRexCanRampage() {
+//        tRex.addRampageStates("mental");
+//        tRex.addRampageStates("quite miffed");
+//        assert(tRex.getRampageStates().contains(tRex.rampage()));
+//    }
 
 }

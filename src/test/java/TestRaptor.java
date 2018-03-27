@@ -15,7 +15,7 @@ public class TestRaptor {
     @Before
     public void before() {
         paddock = new Paddock("Raptor Paddock", SpeciesType.CARNIVORE);
-        raptor = new Raptor("Blue", SpeciesType.CARNIVORE, paddock);
+        raptor = new Raptor("Blue",paddock);
     }
 
     @Test

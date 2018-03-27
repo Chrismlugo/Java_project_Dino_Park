@@ -14,8 +14,8 @@ public class Triceratops extends Dino {
 
     public Triceratops() {}
 
-    public Triceratops(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
-        super(name, species, paddock, stomachSize);
+    public Triceratops(String name, Paddock paddock) {
+        super(name, paddock);
 
         this.setSpecies(SpeciesType.HERBIVORE);
         this.setStomachSize(StomachSize.LARGE);

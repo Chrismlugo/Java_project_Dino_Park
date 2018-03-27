@@ -21,8 +21,8 @@ public class TRex extends Dino implements IRampage {
     public TRex() {
     }
 
-    public TRex(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
-        super(name, species, paddock, stomachSize);
+    public TRex(String name, Paddock paddock) {
+        super(name, paddock);
 
         this.setSpecies(SpeciesType.CARNIVORE);
         this.setStomachSize(StomachSize.SMALL);
@@ -42,9 +42,15 @@ public class TRex extends Dino implements IRampage {
         this.rampageStates = rampageStates;
     }
 
+    public void damagePaddock(){
+        getPaddock().setPaddockSecure(false);
+    }
+
     public void rampage(){
     for(DinoFood food : this.getBelly()){
-      if(food.)
+      if(food.getFoodType().getType() != "meatylicious");{
+          damagePaddock();
+        }
     }
 
     }

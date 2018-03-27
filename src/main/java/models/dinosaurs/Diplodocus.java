@@ -15,8 +15,8 @@ public class Diplodocus extends Dino {
     public Diplodocus() {
     }
 
-    public Diplodocus(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
-        super(name, species, paddock, stomachSize);
+    public Diplodocus(String name, Paddock paddock) {
+        super(name,paddock);
 
         this.setSpecies(SpeciesType.HERBIVORE);
         this.setStomachSize(StomachSize.LARGE);

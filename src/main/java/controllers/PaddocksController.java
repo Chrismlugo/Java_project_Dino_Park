@@ -67,7 +67,7 @@ public class PaddocksController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Paddock paddock = DBHelper.find(Paddock.class,intId);
-            paddock.setFoodStock(20);
+            paddock.stockPaddock();
             DBHelper.saveOrUpdate(paddock);
             paddock.feedDinos();
             DBHelper.saveOrUpdate(paddock);

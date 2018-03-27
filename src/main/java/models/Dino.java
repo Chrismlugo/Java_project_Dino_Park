@@ -24,7 +24,7 @@ public abstract class Dino {
     public Dino() {
     }
 
-    public Dino(String name, SpeciesType species, Paddock paddock, StomachSize stomachSize) {
+    public Dino(String name, Paddock paddock) {
         this.name = name;
         this.species = species;
         this.paddock = paddock;

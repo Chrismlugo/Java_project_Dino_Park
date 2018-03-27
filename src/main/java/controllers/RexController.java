@@ -51,7 +51,7 @@ public class RexController {
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             Paddock paddock = DBHelper.find(Paddock.class, paddockId);
             String name = req.queryParams("Name");
-            TRex rex = new TRex(name,species,paddock);
+            TRex rex = new TRex(name,paddock);
             DBHelper.saveOrUpdate(rex);
             res.redirect("/rexes");
             return null;
