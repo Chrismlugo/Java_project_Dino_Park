@@ -92,6 +92,27 @@ public class Paddock {
     }
 }
 
+    public boolean isPaddockSecure() {
+        return paddockSecure;
+    }
+
+    public void setPaddockSecure(boolean paddockSecure) {
+        this.paddockSecure = paddockSecure;
+    }
+
+    public int countDinosaurs(){
+        return this.dinosaurs.size();
+
+    }
+
+    public void breakout(){
+        List<Dino>  rampagers = new ArrayList<>();
+        if(this.paddockSecure == false){
+            rampagers = dinosaurs;
+        }
+        dinosaurs.clear();
+    }
+
 
 
 }
