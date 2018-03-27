@@ -16,7 +16,7 @@ public class TestTRex {
     public void before() {
 
         paddock = new Paddock("Paddock 9", SpeciesType.CARNIVORE);
-        tRex = new TRex("Biggy Smalls", SpeciesType.CARNIVORE, paddock);
+        tRex = new TRex("Biggy Smalls", paddock);
     }
 
     @Test
