@@ -1,7 +1,5 @@
 package models;
 
-import com.codeclan.db.DBHelper;
-import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.paddocks.Paddock;
@@ -9,7 +7,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,16 +115,19 @@ public abstract class Dino {
             return String.format("Unhealthy: Check %s food store ", paddock);
 
         }
+      
         if (belly < 4) {
 
             return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
         }
+
         if (belly >= 4) {
             return String.format("Moderately healthy: check %s ", paddock);
 
         }
         if (belly >= 5) {
+
             return String.format("Healthy");
 
         } else {

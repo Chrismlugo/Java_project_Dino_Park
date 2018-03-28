@@ -1,7 +1,6 @@
 package models.dinosaurs;
 
 import models.Dino;
-import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.paddocks.Paddock;
@@ -9,7 +8,6 @@ import models.paddocks.Paddock;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.Collections;
 
 @Entity
 @Table(name="rexes")
