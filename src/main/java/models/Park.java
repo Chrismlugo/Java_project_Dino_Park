@@ -15,7 +15,7 @@ public class Park {
     private int id;
     private List<Dino> rampagers;
     private List<Paddock> paddocks;
-    private List<Visitor> visitors;
+    private int visitors;
 
     public Park() {
     }
@@ -24,7 +24,7 @@ public class Park {
         this.name = name;
         this.rampagers = new ArrayList<>();
         this.paddocks = new ArrayList<>();
-        this.visitors = new ArrayList<>();
+        this.visitors = 0;
     }
 
     @Column(name = "name")
@@ -57,8 +57,6 @@ public class Park {
         visitors.add(visitor);
     }
 
-
-
     public void setRampagers(List<Dino> rampagers) {
         this.rampagers = rampagers;
     }
@@ -73,18 +71,17 @@ public class Park {
         this.paddocks = paddocks;
     }
 
-    @OneToMany(mappedBy = "park")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public List<Visitor> getVisitors() {
+    @Column(name = "visitors")
+    public int getVisitors() {
         return visitors;
     }
 
-    public void setVisitors(List<Visitor> visitors) {
+    public void setVisitors(int visitors) {
         this.visitors = visitors;
-    }
+    };
 
     public int countVisitors(){
-      return this.visitors.size();
+      return this.visitors;
     }
 
     public String checkPaddocksAreSecure(){
