@@ -102,6 +102,7 @@ public class RaptorsController {
                 SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
                 raptor.setName(name);
                 raptor.setSpecies(species);
+                raptor.setPaddock(paddock);
                 DBHelper.saveOrUpdate(raptor);
                 res.redirect("/raptors");
                 return null;
