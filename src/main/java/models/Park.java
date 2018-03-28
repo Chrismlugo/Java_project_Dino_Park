@@ -90,17 +90,14 @@ public class Park {
       return this.visitors;
     }
 
-    public String checkPaddocksAreSecure(){
+    public boolean checkPaddocksAreSecure(){
+        Boolean secure = true;
         for(Paddock paddock : paddocks){
-            if(paddock.isPaddockSecure() == true){
-                return "SAFE: PARK OPEN";
-            }
-            else {
-
-                return "WARNING " + paddock.getName() + " is Not Secure";
-            }
+            if(!paddock.isPaddockSecure()){
+                secure = false;
+            };
         }
-        return null;
+        return secure;
     }
 
 
