@@ -17,6 +17,7 @@ public class Park {
     private List<Dino> rampagers;
     private List<Paddock> paddocks;
     private int visitors;
+    private int parkCapacity;
 
     public Park() {
     }
@@ -26,6 +27,7 @@ public class Park {
         this.rampagers = new ArrayList<>();
         this.paddocks = new ArrayList<>();
         this.visitors = 0;
+        this.parkCapacity = 15;
     }
 
     @Column(name = "name")
@@ -55,11 +57,12 @@ public class Park {
     }
 
     public void addVisitors(){
-        Random ran = new Random();
-        int randomNumber = ran.nextInt((10 - 0) + 0);
-        int visitors = getVisitors();
-        int added = visitors + randomNumber;
-        this.visitors += added;
+        if(this.visitors < parkCapacity) {
+            Random ran = new Random();
+            int randomNumber = ran.nextInt((5));
+            int added = randomNumber;
+            this.visitors += added;
+        }
 
     }
 
@@ -101,6 +104,12 @@ public class Park {
     }
 
 
+    @Column(name="park_capacity")
+    public int getParkCapacity() {
+        return parkCapacity;
+    }
 
-
+    public void setParkCapacity(int park_capacity) {
+        this.parkCapacity = park_capacity;
+    }
 }
