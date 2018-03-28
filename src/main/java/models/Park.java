@@ -7,6 +7,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 @Entity
 @Table(name= "parks")
 public class Park {
@@ -50,6 +52,15 @@ public class Park {
 
     public List<Dino> Rampagers() {
         return rampagers;
+    }
+
+    public void addVisitors(){
+        Random ran = new Random();
+        int randomNumber = ran.nextInt((10 - 5) + 5);
+        int visitors = getVisitors();
+        int added = visitors + randomNumber;
+        this.visitors += added;
+
     }
 
     public void setRampagers(List<Dino> rampagers) {
