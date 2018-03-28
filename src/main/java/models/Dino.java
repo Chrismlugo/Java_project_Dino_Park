@@ -122,16 +122,13 @@ public abstract class Dino {
             return String.format("Unhealthy: Check %s food store ", paddock);
 
         }
-        if (belly.size() < 4) {
+        if (belly.size() < stomachSize.getSize()) {
 
             return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
         }
-        if (belly.size() >= 4) {
-            return String.format("Moderately healthy: check %s ", paddock);
 
-        }
-        if (belly.size() >= 5) {
+        if (belly.size() >= stomachSize.getSize()) {
             return String.format("Healthy");
 
         } else {
