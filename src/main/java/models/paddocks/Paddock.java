@@ -30,6 +30,7 @@ public class Paddock {
         this.dinosaurs = new ArrayList<>();
         this.paddockSecure = true;
         this.park = park;
+        breakout();
     }
 
     @Id

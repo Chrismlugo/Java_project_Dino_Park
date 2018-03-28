@@ -22,6 +22,7 @@ public class TRex extends Dino {
     public TRex(String name, Paddock paddock) {
         super(name, SpeciesType.CARNIVORE, paddock, StomachSize.LARGE);
         this.rampageStates = new ArrayList<>();
+        rampage();
     }
 
     public ArrayList<String> getRampageStates() {
