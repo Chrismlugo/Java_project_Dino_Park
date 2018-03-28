@@ -20,7 +20,7 @@ public class Paddock {
     private String name;
     private List<Dino> dinosaurs;
     private SpeciesType species;
-    private ArrayList<DinoFood> foodStock;
+    private int foodStock;
     private boolean paddockSecure;
     private Park park;
 
@@ -29,7 +29,7 @@ public class Paddock {
     public Paddock(String name, SpeciesType species) {
         this.name = name;
         this.species = species;
-        this.foodStock = new ArrayList<>();
+        this.foodStock = 0;
         this.dinosaurs = new ArrayList<>();
         this.paddockSecure = true;
         this.park = park;
@@ -75,34 +75,26 @@ public class Paddock {
     }
 
     @Column(name="foodStock")
-    public ArrayList<DinoFood> getFoodStock() {
+    public int getFoodStock() {
         return foodStock;
     }
 
-    public void setFoodStock(ArrayList<DinoFood> foodStock) {
+    public void setFoodStock(int foodStock) {
         this.foodStock = foodStock;
     }
 
     public void feedDinos(){
         for(Dino dino: this.dinosaurs){
-            if(this.foodStock.size() > 0) {
-                DinoFood intake = this.foodStock.remove(0);
-                dino.feed(intake);
+            if(this.foodStock > 0) {
+                dino.feed();
                 DBHelper.saveOrUpdate(dino);
-
             }
         }
     }
 
-    public void stockPaddock(){
-        for(int i = 0; i < 5; i++){
-            for(FoodType foodType : FoodType.values()){
-                DinoFood dinofood = new DinoFood(foodType);
-                this.foodStock.add(dinofood);
-
-            }
-    } Collections.shuffle(this.foodStock);
-}
+    public void stockPaddock(int amount){
+       this.foodStock += amount;
+    }
 
     public boolean isPaddockSecure() {
         return paddockSecure;
