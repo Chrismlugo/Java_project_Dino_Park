@@ -1,12 +1,9 @@
-import models.DinoFood.DinoFood;
 import models.Enums.FoodType;
 import models.Enums.SpeciesType;
 import models.dinosaurs.TRex;
 import models.paddocks.Paddock;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
