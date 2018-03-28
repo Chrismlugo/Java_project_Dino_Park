@@ -56,7 +56,7 @@ public class Park {
 
     public void addVisitors(){
         Random ran = new Random();
-        int randomNumber = ran.nextInt((10 - 5) + 5);
+        int randomNumber = ran.nextInt((10 - 0) + 0);
         int visitors = getVisitors();
         int added = visitors + randomNumber;
         this.visitors += added;
