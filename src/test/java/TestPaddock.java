@@ -1,5 +1,6 @@
 import models.Dino;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.TRex;
 import models.paddocks.Paddock;
 import org.junit.Before;
@@ -10,10 +11,12 @@ import static org.junit.Assert.assertEquals;
 public class TestPaddock {
     Paddock paddock;
     Dino dino;
+    Park park;
 
     @Before
     public void setUp() throws Exception {
-        paddock = new Paddock("Boneyard", SpeciesType.CARNIVORE);
+        park = new Park("TEST PARK");
+        paddock = new Paddock("Boneyard", SpeciesType.CARNIVORE, park);
         dino = new TRex("Hendo", paddock);
     }
 
