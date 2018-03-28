@@ -1,15 +1,17 @@
 <div>
-    <p> Name: $tri.getName()</p>
-    <p> Paddock: $tri.getPaddock().getName()</p>
-    <p> Status: $tri.hungerLevel()</p>
+    <p class="col-sm-6 text-center"> Name: $tri.getName()</p>
+    <p class="col-sm-6 text-center"> Paddock: $tri.getPaddock().getName()</p>
+    <p class="col-sm-6 text-center"> Status: $tri.hungerLevel()</p>
 
 </div>
 
-<a href="/triceratops/$tri.getId()/edit" class="button center">Edit</a>
+<a href="/triceratops/$tri.getId()/edit" class="button">Edit</a>
 
-<a href="/triceratops/transfer/$tri.getId()" class="button center">Transfer Dino</a>
+<a href="/triceratops/transfer/$tri.getId()" class="button">Transfer Dino</a>
+
+
+<a href="/triceratops" class="button">Back</a>
 
 <form action="/triceratops/$tri.getId()/delete" method="post">
     <input type="submit" value="Delete" class="button center">
 </form>
-<a href="/triceratops" class="button center">Back</a>

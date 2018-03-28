@@ -1,20 +1,8 @@
-@font-face {
-  font-family: 'MyWebFont';
-  src: url('webfont.eot');
-  src: url('webfont.eot?#iefix') format('embedded-opentype'),
-       url('webfont.woff2') format('woff2'),
-       url('webfont.woff') format('woff'),
-       url('webfont.ttf')  format('truetype'),
-       url('webfont.svg#svgFontName') format('svg'); 
-}
 
 body{
-background-color: green;
+background: green;
 }
 
-h1{
-text-color:rgb(181, 0, 0);
-}
 
  label[class=hidden]{
   display:none;
@@ -34,42 +22,14 @@ display: none;
 }
 
 
-
-table{
-  padding: 25px;
-  margin: 15px;
+header nav {
+  display: flex;
+  justify-content: flex-end;
 }
 
-table,th,td{
-  border: 1px solid black;
-  border-spacing: inherit;
-  border-collapse: collapse;
+.jumbotron h1{
+font-family:'Nosifier', cursive;
 }
-
-th,td{
-  padding: 5px;
-}
-
-th{
-  font-family: sans-serif;
-  color: rgb(10, 10, 10);
-}
-
-td{
-  background-color: rgba(221, 207, 30, 0.99);
-  font-family: sans-serif;
-  text-align: center;
-  color: none;
-}
-
-td.special{
-  border-style: hidden;
-  font-family: sans-serif;
-    background-color: rgba(162, 30, 30, 0.98);
-    text-align: justify;
-    font-size: 20px;
-}
-
 
 input[type=text]{
   font-size: 15px;
@@ -79,4 +39,35 @@ input[type=text]{
   border: none;
   border-radius: 4px;
   background-color: rgba(221, 207, 30, 0.99);
+}
+
+a{
+  display: flex;
+  font-family: 'Rubik', sans-serif;
+  text-decoration: none;
+}
+
+a:link{
+  color: rgb(255, 255, 255);
+}
+
+a:visited{
+  color: rgb(13, 180, 180);
+}
+
+a:hover{
+  color: rgb(62, 218, 218);
+}
+
+a:active{
+  color: rgb(87, 11, 162);
+}
+
+.jumbotron{
+    display: flex;
+    align-items: center;
+    background-image:url("/images/50823004-metal-texture-background.jpg";
+    color: #ffffff;
+    height: 500px;
+    text-shadow: 0.25px 0.25px 0.25px #000000;
 }

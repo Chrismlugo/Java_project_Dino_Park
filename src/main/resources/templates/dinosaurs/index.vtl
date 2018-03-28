@@ -1,20 +1,33 @@
+<header class="container">
+<div class="row">
 <p class="pageHeader">All Dino's</p>
+<nav class="col-sm-8 text-right">
+    <p><a href="/raptors" class="button center">Raptors</a></p>
+
+    <p><a href="/rexes" class="button center">Rexes</a></p>
+
+    <p><a href="/diplos" class="button center">Diplodocuses</a></p>
+
+    <p><a href="/triceratops" class="button center">Triceratops</a></p>
+</nav>
+</div>
+</header>
 
 <div class="container">
-    <table>
+    <table class="dino">
         <tr>
             <th>Name</th>
             <th>Species</th>
             <th>Status</th>
-            <th>Paddock</th>
         </tr>
         #foreach($dino in $dinosaurs )
         <tr>
             <td>$dino.getName()</td>
             <td>$dino.getSpecies()</td>
             <td>$dino.hungerLevel()</td>
-            <td>$dino.getPaddock().getName()</td>
         </tr>
         #end
     </table>
 </div>
+
+<nav><a href="/paddocks">check Paddocks</a></nav>
