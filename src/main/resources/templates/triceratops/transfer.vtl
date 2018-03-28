@@ -2,14 +2,14 @@
 
 
 <form action="/triceratops/transfer/$tri.getId()" method="post">
-    <label for="Name">Name:</label>
-    <input class="inputbox" type="text" name="Name" required="true" value="$tri.getName()">
+    <label class="hidden" for="Name">Name:</label>
+    <input class="hidden" type="text" name="Name" required="true" value="$tri.getName()">
 
-    <label for="species">Species:</label> <!-- NEW -->
-    <select id="species" name="species">
+    <label class="hidden" for="species">Species:</label> <!-- NEW -->
+    <select class="hidden" id="species" name="species">
         #foreach($species in $species)
         #if ($species == $tri.getSpecies())
-        <option value="$species"
+        <option class="hidden" value="$species"
                 selected="selected"
                 #end>
             $species.getSpecies()</option>

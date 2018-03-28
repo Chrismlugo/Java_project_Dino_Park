@@ -22,6 +22,7 @@ public class TRex extends Dino {
     public TRex(String name, Paddock paddock) {
         super(name, SpeciesType.CARNIVORE, paddock, StomachSize.LARGE);
         this.rampageStates = new ArrayList<>();
+        rampage();
     }
 
     public ArrayList<String> getRampageStates() {
@@ -47,7 +48,6 @@ public class TRex extends Dino {
             int randomNumber = ran.nextInt((3) + 1);
             if (randomNumber == 3) {
                 damagePaddock();
-                getPaddock().breakout();
 
             }
         }

@@ -13,12 +13,12 @@ import java.util.List;
 
 public class Seeds {
     public static void SeedData() {
-        DBHelper.deleteAll(Park.class);
         DBHelper.deleteAll(Diplodocus.class);
         DBHelper.deleteAll(Raptor.class);
         DBHelper.deleteAll(TRex.class);
         DBHelper.deleteAll(Triceratops.class);
         DBHelper.deleteAll(Paddock.class);
+        DBHelper.deleteAll(Park.class);
 
 
         Park park = new Park("Dino Park");
