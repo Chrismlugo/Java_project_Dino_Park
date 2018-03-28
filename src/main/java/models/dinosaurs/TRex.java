@@ -36,18 +36,22 @@ public class TRex extends Dino {
         this.rampageStates = rampageStates;
     }
 
-    public void damagePaddock(){
+    public void damagePaddock() {
         getPaddock().setPaddockSecure(false);
     }
 
     public void rampage() {
-        Random ran = new Random();
-        int randomNumber = ran.nextInt((3)+ 1);
-        if(randomNumber == 3){
+
+        if (getBelly() < getStomachSize().getSize()) {
+            Random ran = new Random();
+            int randomNumber = ran.nextInt((3) + 1);
+            if (randomNumber == 3) {
                 damagePaddock();
                 getPaddock().breakout();
+
             }
         }
     }
+}
 
 
