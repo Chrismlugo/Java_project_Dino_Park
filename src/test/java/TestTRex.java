@@ -11,14 +11,11 @@ public class TestTRex {
     TRex tRex;
     Paddock paddock;
 
-
     @Before
     public void before() {
 
         paddock = new Paddock("Paddock 9", SpeciesType.CARNIVORE);
         tRex = new TRex("Biggy Smalls", paddock);
-
-
         paddock.getDinosaurs().add(tRex);
     }
 
@@ -28,7 +25,6 @@ public class TestTRex {
         tRex.rampage();
         assertEquals(0, paddock.countDinosaurs());
     }
-
 
 
 }
