@@ -2,6 +2,7 @@ package controllers;
 
 import com.codeclan.db.DBHelper;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.Diplodocus;
 import models.dinosaurs.TRex;
 import models.dinosaurs.Triceratops;
@@ -25,6 +26,10 @@ public class DiploController {
     private void setupEndPoints(){
         get("/diplos", (req,res) ->{
             HashMap<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req,res);
             model.put("user", loggedInUser);
             List<Diplodocus> diplos = DBHelper.getAll(Diplodocus.class);
@@ -36,6 +41,10 @@ public class DiploController {
 
         get ("/diplos/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             SpeciesType species = SpeciesType.HERBIVORE;
@@ -62,6 +71,10 @@ public class DiploController {
             Diplodocus diplo = DBHelper.find(Diplodocus.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("diplo", diplo);
@@ -76,6 +89,10 @@ public class DiploController {
             Diplodocus diplo = DBHelper.find(Diplodocus.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
@@ -126,6 +143,10 @@ public class DiploController {
             SpeciesType herb = SpeciesType.HERBIVORE;
             species.add(herb);
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("diplo", diplo);

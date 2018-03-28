@@ -3,6 +3,7 @@ package controllers;
 import com.codeclan.db.DBHelper;
 import models.Dino;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.Raptor;
 import models.paddocks.Paddock;
 import spark.ModelAndView;
@@ -26,6 +27,10 @@ public class PaddocksController {
     private void setupEndPoints() {
         get("/paddocks", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             List<Paddock> paddocks = DBHelper.getAll(Paddock.class);
@@ -37,6 +42,10 @@ public class PaddocksController {
 
         get ("/paddocks/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             List<SpeciesType> species = new ArrayList<>();
@@ -55,6 +64,10 @@ public class PaddocksController {
             Paddock paddock = DBHelper.find(Paddock.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("paddock", paddock);
@@ -92,6 +105,10 @@ public class PaddocksController {
             List<Dino> dinosaurs = DBHelper.getDinosOfPaddock(paddock);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("paddock", paddock);
@@ -107,6 +124,10 @@ public class PaddocksController {
             Paddock paddock = DBHelper.find(Paddock.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 

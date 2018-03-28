@@ -2,6 +2,7 @@ package controllers;
 
 import com.codeclan.db.DBHelper;
 import models.Dino;
+import models.Park;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -19,6 +20,10 @@ public class DinosController {
     private void setUpEndPoints() {
         get("/dinosaurs", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             List<Dino> dinosaurs = DBHelper.getAll(Dino.class);
