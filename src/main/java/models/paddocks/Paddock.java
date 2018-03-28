@@ -23,7 +23,7 @@ public class Paddock {
 
     public Paddock() {}
 
-    public Paddock(String name, SpeciesType species) {
+    public Paddock(String name, SpeciesType species, Park park) {
         this.name = name;
         this.species = species;
         this.foodStock = 0;

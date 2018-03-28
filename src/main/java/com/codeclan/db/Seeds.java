@@ -23,11 +23,11 @@ public class Seeds {
 
         Park park = new Park("Dino Park");
         DBHelper.saveOrUpdate(park);
-        Paddock paddock1 = new Paddock("Herby's Green Patch", SpeciesType.HERBIVORE);
+        Paddock paddock1 = new Paddock("Herby's Green Patch", SpeciesType.HERBIVORE, park);
         DBHelper.saveOrUpdate(paddock1);
-        Paddock paddock9 = new Paddock("OPEN PADDOCK 9", SpeciesType.CARNIVORE);
+        Paddock paddock9 = new Paddock("OPEN PADDOCK 9", SpeciesType.CARNIVORE, park);
         DBHelper.saveOrUpdate(paddock9);
-        Paddock paddock3 = new Paddock("Here be Raptors", SpeciesType.CARNIVORE);
+        Paddock paddock3 = new Paddock("Here be Raptors", SpeciesType.CARNIVORE, park);
         DBHelper.saveOrUpdate(paddock3);
 
         Paddock foundPaddock = DBHelper.find(Paddock.class, paddock1.getId());
