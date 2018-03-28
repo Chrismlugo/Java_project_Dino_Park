@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class Dino {
     private int id;
     private String name;
-    private List<DinoFood> belly;
+    private int belly;
     private SpeciesType species;
     private Paddock paddock;
     private StomachSize stomachSize;
@@ -27,7 +27,7 @@ public abstract class Dino {
         this.name = name;
         this.species = species;
         this.paddock = paddock;
-        this.belly = new ArrayList<>();
+        this.belly = 0;
         this.stomachSize = stomachSize;
 
     }
@@ -52,22 +52,18 @@ public abstract class Dino {
         this.name = name;
     }
 
-    @ManyToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(name = "dino_food",
-            joinColumns = {@JoinColumn(name = "dino_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "food_id", nullable = false, updatable = false)})
-    public List<DinoFood> getBelly() {
+    @Column(name = "belly")
+    public int getBelly() {
         return belly;
     }
 
-    public void setBelly(List<DinoFood> belly) {
+    public void setBelly(int belly) {
         this.belly = belly;
     }
 
-    public void feed(DinoFood food) {
-        if(this.belly.size() < this.stomachCapacity()){
-        this.belly.add(food);
+    public void feed() {
+        if(this.belly < this.stomachCapacity()){
+        this.belly +=1;
         }
     }
 
@@ -111,7 +107,7 @@ public abstract class Dino {
     public String hungerLevel() {
         String paddock = getPaddock().getName();
         String transfer = "or check for paddock transfer";
-        if (belly.size() == 0) {
+        if (belly == 0) {
             if (species == SpeciesType.HERBIVORE) {
                 return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
             }
@@ -119,13 +115,19 @@ public abstract class Dino {
             return String.format("Unhealthy: Check %s food store ", paddock);
 
         }
-        if (belly.size() < stomachSize.getSize()) {
+      
+        if (belly < 4) {
 
             return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
         }
 
-        if (belly.size() >= stomachSize.getSize()) {
+        if (belly >= 4) {
+            return String.format("Moderately healthy: check %s ", paddock);
+
+        }
+        if (belly >= 5) {
+
             return String.format("Healthy");
 
         } else {
