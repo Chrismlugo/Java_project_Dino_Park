@@ -1,4 +1,3 @@
-import models.Enums.FoodType;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.dinosaurs.Diplodocus;
