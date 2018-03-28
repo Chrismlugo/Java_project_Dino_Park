@@ -26,6 +26,10 @@ public class TriController {
     private void setupEndPoints(){
         get("/triceratops", (req,res) ->{
             HashMap<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req,res);
             model.put("user", loggedInUser);
             List<Triceratops> triceratops = DBHelper.getAll(Triceratops.class);
@@ -37,6 +41,10 @@ public class TriController {
 
         get ("/triceratops/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             SpeciesType species = SpeciesType.HERBIVORE;
@@ -64,6 +72,10 @@ public class TriController {
             Triceratops tri = DBHelper.find(Triceratops.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("tri", tri);

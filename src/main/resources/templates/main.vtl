@@ -1,21 +1,25 @@
-<h1>Dyno Dino's</h1>
+<header class="container">
+    <div class="row">
+            <p class="col-md-6 text-right">Park Status: $park.parkSafetyStatus()</p>
 
-    <a href="/dinosaurs" class="button center">All Dino's</a>
 
-    <a href="/paddocks" class="button center">All Paddocks</a>
+    </div>
+</header>
+<section class="jumbotron">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Dyno Dinos</h1>
+             #if ($park.checkPaddocksAreSecure() == true)
+                <form action="/park/enter" method="post">
+                    <input type="submit" value="Open Park" class="button center">
+                </form>
+                #end
+                <p><a href="/dinosaurs" class="button center">Dinos</a></p>
+                <p><a href="/paddocks" class="button center">Paddocks</a></p>
+        </div>
+    </div>
+</section>
 
-    <a href="/raptors" class="button center">Raptors</a>
 
-    <a href="/rexes" class="button center">Rexes</a>
 
-    <a href="/diplos" class="button center">Diplodocuses</a>
 
-    <a href="/triceratops" class="button center">Triceratops</a>
-
-#if ($park.checkPaddocksAreSecure() == true)
-<form action="/park/enter" method="post">
-    <input type="submit" value="Open Park" class="button center">
-</form>
-#end
-
-<h2>Park Status: $park.parkSafetyStatus()</h2>
