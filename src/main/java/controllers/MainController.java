@@ -6,6 +6,7 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.before;
@@ -32,7 +33,9 @@ public class MainController {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Park park = DBHelper.find(Park.class,1);
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("park", park);
             model.put("user", loggedInUser);

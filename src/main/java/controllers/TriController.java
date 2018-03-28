@@ -2,6 +2,7 @@ package controllers;
 
 import com.codeclan.db.DBHelper;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.TRex;
 import models.dinosaurs.Triceratops;
 import models.paddocks.Paddock;
@@ -77,8 +78,12 @@ public class TriController {
             Triceratops tri = DBHelper.find(Triceratops.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
+            model.put("park", park);
 
             List<Paddock> paddocks = DBHelper.getAllPaddocksOfSpeciesType(SpeciesType.HERBIVORE);
             List<SpeciesType> species = new ArrayList<>();
@@ -127,6 +132,10 @@ public class TriController {
             SpeciesType herb = SpeciesType.HERBIVORE;
             species.add(herb);
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("tri", tri);

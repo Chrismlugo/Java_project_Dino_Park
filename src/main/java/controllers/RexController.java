@@ -2,6 +2,7 @@ package controllers;
 
 import com.codeclan.db.DBHelper;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.Raptor;
 import models.dinosaurs.TRex;
 import models.paddocks.Paddock;
@@ -25,6 +26,10 @@ public class RexController {
     private void setupEndPoints(){
         get("/rexes", (req,res) ->{
             HashMap<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req,res);
             model.put("user", loggedInUser);
             List<TRex> rexes = DBHelper.getAll(TRex.class);
@@ -36,6 +41,10 @@ public class RexController {
 
         get ("/rexes/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             SpeciesType species = SpeciesType.CARNIVORE;
@@ -63,6 +72,10 @@ public class RexController {
             TRex rex = DBHelper.find(TRex.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("rex", rex);
@@ -77,6 +90,10 @@ public class RexController {
             TRex rex = DBHelper.find(TRex.class,intId);
 
             Map<String,Object> model = new HashMap<>();
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            model.put("park", park);
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
