@@ -91,6 +91,10 @@ public class Paddock {
         }
     }
 
+    public void addDino(Dino dino){
+        this.dinosaurs.add(dino);
+    }
+
     public void stockPaddock(int amount){
        this.foodStock += amount;
     }

@@ -10,15 +10,12 @@ import static org.junit.Assert.assertEquals;
 public class TestTRex {
     TRex tRex;
     Paddock paddock;
-    DinoFood dinoFood;
 
     @Before
     public void before() {
 
         paddock = new Paddock("Paddock 9", SpeciesType.CARNIVORE);
         tRex = new TRex("Biggy Smalls", paddock);
-        dinoFood = new DinoFood(FoodType.PEPPERONI);
-        paddock.getFoodStock().add(dinoFood);
         paddock.getDinosaurs().add(tRex);
     }
 

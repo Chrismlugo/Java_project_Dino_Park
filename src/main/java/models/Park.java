@@ -1,7 +1,6 @@
 package models;
 
 import models.paddocks.Paddock;
-import models.visitor.Visitor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -51,10 +50,6 @@ public class Park {
 
     public List<Dino> Rampagers() {
         return rampagers;
-    }
-
-    public void addVisitor(Visitor visitor){
-        visitors.add(visitor);
     }
 
     public void setRampagers(List<Dino> rampagers) {
