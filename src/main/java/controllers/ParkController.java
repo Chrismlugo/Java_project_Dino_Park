@@ -9,8 +9,8 @@ public class ParkController {
 
     private void setupEndPoints(){
 
-        post("/park/enter", (req,res) ->{
-
-        })
+//        post("/park/enter", (req,res) ->{
+//
+//        })
     }
 }
