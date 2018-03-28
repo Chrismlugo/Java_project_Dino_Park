@@ -9,6 +9,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -62,8 +63,10 @@ public abstract class Dino {
     }
 
     public void feed() {
+        Random ran = new Random();
+        int randomNumber = ran.nextInt((5));
         if(this.belly < this.stomachCapacity()){
-        this.belly +=1;
+        this.belly +=randomNumber;
         }
     }
 
