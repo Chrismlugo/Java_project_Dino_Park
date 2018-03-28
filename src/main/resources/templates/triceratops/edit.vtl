@@ -4,8 +4,8 @@
     <label for="Name">Name:</label>
     <input class="inputbox" type="text" name="Name" required="true" value="$tri.getName()">
 
-    <label for="species">Species:</label> <!-- NEW -->
-    <select id="species" name="species">
+    <label class="hidden" for="species">Species:</label> <!-- NEW -->
+    <select class="hidden" id="species" name="species">
         #foreach($species in $species)
         <option value="$species"
                 #if ($species == $tri.getSpecies())
@@ -15,8 +15,8 @@
         #end
     </select>
 
-    <label for="paddock">Transfer to new Paddock:</label> <!-- NEW -->
-    <select id="paddock" name="paddock">
+    <label class="hidden" for="paddock">Transfer to new Paddock:</label> <!-- NEW -->
+    <select class="hidden" id="paddock" name="paddock">
         #foreach( $paddock in $paddocks )
         <option value="$paddock.getId()"
                 #if ($paddock.getId() == $tri.getPaddock().getId())

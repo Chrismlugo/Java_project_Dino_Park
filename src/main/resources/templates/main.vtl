@@ -1,8 +1,17 @@
-<h1>Dyno Dino's</h1>
+<header class="container">
+    <div class="row">
+        <h1 class="col-sm-4">Dyno Dinos</h1>
+        <nav class="col-sm-12 text-right">
+            <p>Park Status: $park.parkSafetyStatus()</p>
+            #if ($park.checkPaddocksAreSecure() == true)
+            <form action="/park/enter" method="post">
+                <input type="submit" value="Open Park" class="button center">
+            </form>
+            #end
+        </nav>
+    </div>
+</header>
 
-    <a href="/dinosaurs" class="button center">All Dino's</a>
-
-    <a href="/paddocks" class="button center">All Paddocks</a>
 
     <a href="/raptors" class="button center">Raptors</a>
 
@@ -12,10 +21,5 @@
 
     <a href="/triceratops" class="button center">Triceratops</a>
 
-#if ($park.checkPaddocksAreSecure() == true)
-<form action="/park/enter" method="post">
-    <input type="submit" value="Open Park" class="button center">
-</form>
-#end
 
-<h2>Park Status: $park.parkSafetyStatus()</h2>
+
