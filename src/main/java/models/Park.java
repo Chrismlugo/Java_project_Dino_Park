@@ -98,7 +98,7 @@ public class Park {
         for(Paddock paddock : paddocks){
             if(!paddock.isPaddockSecure()){
                 secure = false;
-            };
+            }
         }
         return secure;
     }
@@ -111,5 +111,14 @@ public class Park {
 
     public void setParkCapacity(int park_capacity) {
         this.parkCapacity = park_capacity;
+    }
+
+    public String parkSafetyStatus(){
+        if(checkPaddocksAreSecure() == true){
+            return "All Paddocks Secure. Park Safe to Open";
+        }
+        else{
+            return "Warning! Paddock Breach Detected!";
+        }
     }
 }
