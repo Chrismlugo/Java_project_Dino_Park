@@ -62,13 +62,11 @@ public abstract class Dino {
         this.belly = belly;
     }
 
-    public void feed() {
-        Random ran = new Random();
-        int randomNumber = ran.nextInt((5));
-        int belly = getBelly();
-        int intake = belly + randomNumber;
-        if(this.belly < this.stomachCapacity()){
-        this.belly += intake;
+    public void feed(int foodAmount) {
+        if(foodAmount + getBelly() < stomachCapacity()){
+            this.belly += foodAmount;
+        } else {
+            this.belly = stomachCapacity();
         }
     }
 
