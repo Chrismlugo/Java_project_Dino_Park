@@ -1,7 +1,5 @@
 package models;
 
-import com.codeclan.db.DBHelper;
-import models.DinoFood.DinoFood;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.paddocks.Paddock;
@@ -9,7 +7,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
