@@ -10,6 +10,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 @Entity
 @Table(name="paddocks")
 public class Paddock {
@@ -83,9 +85,11 @@ public class Paddock {
 
     public void feedDinos(){
         for(Dino dino: this.dinosaurs){
-            if(this.foodStock > 0) {
-                dino.feed();
-                this.foodStock -= 1;
+            Random ran = new Random();
+            int foodAmount = ran.nextInt((5) + 1);
+            if(this.foodStock > foodAmount) {
+                dino.feed(foodAmount);
+                this.foodStock -= foodAmount;
                 DBHelper.saveOrUpdate(dino);
             }
         }
