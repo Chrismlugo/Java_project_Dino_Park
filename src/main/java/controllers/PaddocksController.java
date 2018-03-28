@@ -92,7 +92,10 @@ public class PaddocksController {
         post ("/paddocks", (req, res) -> {
             SpeciesType species = SpeciesType.valueOf(req.queryParams("species"));
             String name = req.queryParams("Name");
-            Paddock paddock = new Paddock(name,species);
+            List<Park> parks = DBHelper.getAll(Park.class);
+            Park parkFound = parks.remove(0);
+            Park park = DBHelper.find(Park.class,parkFound.getId());
+            Paddock paddock = new Paddock(name,species, park);
             DBHelper.saveOrUpdate(paddock);
             res.redirect("/paddocks");
             return null;

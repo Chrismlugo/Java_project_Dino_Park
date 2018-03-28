@@ -1,5 +1,6 @@
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
+import models.Park;
 import models.dinosaurs.Diplodocus;
 import models.dinosaurs.Raptor;
 import models.dinosaurs.Triceratops;
@@ -18,12 +19,13 @@ public class TestDino {
     private Triceratops triceratops;
     private Paddock herbypaddock;
     private Paddock carnipaddock;
+    private Park park;
 
     @Before
     public void setup(){
-
-        herbypaddock = new Paddock("Leafy Green", SpeciesType.HERBIVORE);
-        carnipaddock = new Paddock("Meat City", SpeciesType.CARNIVORE);
+        park = new Park("TEST PARK");
+        herbypaddock = new Paddock("Leafy Green", SpeciesType.HERBIVORE, park);
+        carnipaddock = new Paddock("Meat City", SpeciesType.CARNIVORE, park);
         diplodocus = new Diplodocus("Brian", herbypaddock);
         raptor = new Raptor("Will Smith", carnipaddock);
         triceratops = new Triceratops("Trunko", herbypaddock);
