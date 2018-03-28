@@ -85,6 +85,7 @@ public class Paddock {
         for(Dino dino: this.dinosaurs){
             if(this.foodStock > 0) {
                 dino.feed();
+                this.foodStock -= 1;
                 DBHelper.saveOrUpdate(dino);
             }
         }
