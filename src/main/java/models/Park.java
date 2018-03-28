@@ -2,6 +2,8 @@ package models;
 
 import models.paddocks.Paddock;
 import models.visitor.Visitor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -47,7 +49,7 @@ public class Park {
 
 
 
-    public List<Dino> getRampagers() {
+    public List<Dino> Rampagers() {
         return rampagers;
     }
 
@@ -61,7 +63,8 @@ public class Park {
         this.rampagers = rampagers;
     }
 
-    @OneToMany(mappedBy = "park", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "park")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Paddock> getPaddocks() {
         return paddocks;
     }
@@ -70,7 +73,8 @@ public class Park {
         this.paddocks = paddocks;
     }
 
-    @OneToMany(mappedBy = "park", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "park")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Visitor> getVisitors() {
         return visitors;
     }

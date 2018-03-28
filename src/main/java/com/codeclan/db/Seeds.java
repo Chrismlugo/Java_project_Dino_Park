@@ -2,6 +2,7 @@ package com.codeclan.db;
 
 import models.Dino;
 import models.Enums.SpeciesType;
+import models.Park;
 import models.dinosaurs.Diplodocus;
 import models.dinosaurs.Raptor;
 import models.dinosaurs.TRex;
@@ -12,12 +13,16 @@ import java.util.List;
 
 public class Seeds {
     public static void SeedData() {
+        DBHelper.deleteAll(Park.class);
         DBHelper.deleteAll(Diplodocus.class);
         DBHelper.deleteAll(Raptor.class);
         DBHelper.deleteAll(TRex.class);
         DBHelper.deleteAll(Triceratops.class);
         DBHelper.deleteAll(Paddock.class);
 
+
+        Park park = new Park("Dino Park");
+        DBHelper.saveOrUpdate(park);
         Paddock paddock1 = new Paddock("Herby's Green Patch", SpeciesType.HERBIVORE);
         DBHelper.saveOrUpdate(paddock1);
         Paddock paddock9 = new Paddock("OPEN PADDOCK 9", SpeciesType.CARNIVORE);

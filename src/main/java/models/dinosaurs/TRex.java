@@ -46,6 +46,7 @@ public class TRex extends Dino {
             if (food.getFoodType().getType() != "meatylicious") ;
             {
                 damagePaddock();
+                getPaddock().breakout();
             }
         }
     }

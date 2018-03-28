@@ -1,4 +1,5 @@
 import models.DinoFood.DinoFood;
+import models.Enums.FoodType;
 import models.Enums.SpeciesType;
 import models.Enums.StomachSize;
 import models.dinosaurs.Diplodocus;
@@ -29,7 +30,7 @@ public class TestDino {
         diplodocus = new Diplodocus("Brian", herbypaddock);
         raptor = new Raptor("Will Smith", carnipaddock);
         triceratops = new Triceratops("Trunko", herbypaddock);
-        food = new DinoFood();
+        food = new DinoFood(FoodType.VEGETARIAN);
     }
 
     @Test
@@ -64,8 +65,8 @@ public class TestDino {
 
     @Test
     public void dinosHaveStomachCapacity(){
-        assertEquals(5, diplodocus.getStomachCapacity());
-        assertEquals(2, raptor.getStomachCapacity());
+        assertEquals(5, diplodocus.stomachCapacity());
+        assertEquals(2, raptor.stomachCapacity());
     }
 
     @Test
