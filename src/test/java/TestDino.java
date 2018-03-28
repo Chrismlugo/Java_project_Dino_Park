@@ -19,7 +19,6 @@ public class TestDino {
     private Triceratops triceratops;
     private Paddock herbypaddock;
     private Paddock carnipaddock;
-    private DinoFood food;
 
     @Before
     public void setup(){
@@ -29,7 +28,6 @@ public class TestDino {
         diplodocus = new Diplodocus("Brian", herbypaddock);
         raptor = new Raptor("Will Smith", carnipaddock);
         triceratops = new Triceratops("Trunko", herbypaddock);
-        food = new DinoFood(FoodType.VEGETARIAN);
     }
 
     @Test
@@ -48,13 +46,13 @@ public class TestDino {
 
     @Test
     public void dinoBelliesStartEmpty(){
-        assertEquals(0, triceratops.getBelly().size());
+        assertEquals(0, triceratops.getBelly());
     }
 
     @Test
     public void dinosCanEat(){
-        raptor.feed(food);
-        assertEquals(1, raptor.getBelly().size());
+        raptor.feed();
+        assertEquals(1, raptor.getBelly());
     }
 
     @Test
@@ -70,10 +68,10 @@ public class TestDino {
 
     @Test
     public void dinosCannotExceedStomachCapacity(){
-        raptor.feed(food);
-        raptor.feed(food);
-        assertEquals(2, raptor.getBelly().size());
-        raptor.feed(food);
-        assertEquals(2, raptor.getBelly().size());
+        raptor.feed();
+        raptor.feed();
+        assertEquals(2, raptor.getBelly());
+        raptor.feed();
+        assertEquals(2, raptor.getBelly());
     }
 }
