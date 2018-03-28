@@ -11,16 +11,16 @@ import static org.junit.Assert.assertEquals;
 public class TestPaddock {
     Paddock paddock;
     Dino dino;
-    DinoFood food;
+
 
     @Before
     public void setUp() throws Exception {
         paddock = new Paddock("Boneyard", SpeciesType.CARNIVORE);
         dino = new TRex();
-        food = new DinoFood(FoodType.VEGETARIAN);
-        food.setFoodType(FoodType.VEGETARIAN);
+
+
         paddock.getDinosaurs().add(dino);
-        dino.getBelly().add(food);
+
     }
 
 
