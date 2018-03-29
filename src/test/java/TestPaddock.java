@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class TestPaddock {
     Paddock paddock;
@@ -41,10 +42,10 @@ public class TestPaddock {
     @Test
     public void paddockCanFeedDinos(){
         assertEquals(0, dino.getBelly());
-        paddock.stockPaddock(1);
+        paddock.stockPaddock(20);
         paddock.addDino(dino);
         paddock.feedDinos();
-        assertEquals(1, dino.getBelly());
+        assertNotEquals(0, dino.getBelly());
     }
 
     @Test
@@ -61,6 +62,13 @@ public class TestPaddock {
         paddock.setPaddockSecure(false);
         paddock.breakout();
         assertEquals(0, paddock.countDinosaurs());
+    }
+
+    @Test
+    public void dinoCantBreakoutIfSecure(){
+        paddock.addDino(dino);
+        paddock.breakout();
+        assertEquals(1, paddock.countDinosaurs());
     }
 }
 
