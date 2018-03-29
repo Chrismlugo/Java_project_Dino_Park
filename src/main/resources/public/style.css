@@ -124,3 +124,16 @@ display: flex;
 justify-content: center;
 }
 
+label[class=login]{
+display: flex;
+justify-content: center;
+}
+
+input[class=login]{
+
+}
+
+button[class=login]{
+display: flex;
+justify-content: center;
+}
