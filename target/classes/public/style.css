@@ -37,6 +37,11 @@ option[class=hidden]{
 display: none;
 }
 
+header[class=container2]{
+    display: flex;
+    justify-content: center;
+}
+
 
 header nav {
   display: flex;
