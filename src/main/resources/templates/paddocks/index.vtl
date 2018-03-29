@@ -10,13 +10,15 @@
         <tr>
             <th>Name</th>
             <th>Species</th>
-            <th>Status</th>
+            <th>Food Stock</th>
+            <th>Secure</th>
         </tr>
         #foreach($paddock in $paddocks )
         <tr>
             <td>$paddock.getName()</td>
             <td>$paddock.getSpecies()</td>
             <td>$paddock.getFoodStock()</td>
+            <td>$paddock.isPaddockSecure()</td>
             <td><a href="/paddocks/$paddock.getId()" class="button center">View</a></td>
             <td><a href="/paddocks/$paddock.getId()/edit" class="button center">edit</a></td>
             <td><a href="/paddocks/$paddock.getId()/delete" class="button center">destroy</a></td>
