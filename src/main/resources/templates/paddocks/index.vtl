@@ -21,7 +21,9 @@
             <td>$paddock.isPaddockSecure()</td>
             <td><a href="/paddocks/$paddock.getId()" class="button center">View</a></td>
             <td><a href="/paddocks/$paddock.getId()/edit" class="button center">edit</a></td>
-            <td><a href="/paddocks/$paddock.getId()/delete" class="button center">destroy</a></td>
+            <td><form action="/paddocks/$paddock.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
 
         </tr>
         #end
