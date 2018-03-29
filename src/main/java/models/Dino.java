@@ -62,14 +62,6 @@ public abstract class Dino {
         this.belly = belly;
     }
 
-    public void feed(int foodAmount) {
-        if(foodAmount + getBelly() < stomachCapacity()){
-            this.belly += foodAmount;
-        } else {
-            this.belly = stomachCapacity();
-        }
-    }
-
     @Column(name = "species")
     public SpeciesType getSpecies() {
         return species;
@@ -98,8 +90,6 @@ public abstract class Dino {
         this.paddock = paddock;
     }
 
-
-
     public int stomachCapacity() {
         return this.stomachSize.getSize();
     }
@@ -108,6 +98,13 @@ public abstract class Dino {
         return getBelly() == 0;
     }
 
+    public void feed(int foodAmount) {
+        if(foodAmount + getBelly() < stomachCapacity()){
+            this.belly += foodAmount;
+        } else {
+            this.belly = stomachCapacity();
+        }
+    }
 
     public String hungerLevel() {
         String paddock = getPaddock().getName();
@@ -121,17 +118,17 @@ public abstract class Dino {
 
         }
       
-        if (belly < 4) {
+        if (belly < stomachCapacity() - 2) {
 
             return String.format("Potential Health Risk: check food store in  %s ", paddock);
 
         }
 
-        if (belly >= 4) {
+        if (belly >= stomachCapacity() - 1) {
             return String.format("Moderately healthy: check %s ", paddock);
 
         }
-        if (belly >= 5) {
+        if (belly >= stomachCapacity()) {
 
             return String.format("Healthy");
 

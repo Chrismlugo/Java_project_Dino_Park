@@ -83,6 +83,14 @@ public class Paddock {
         this.foodStock = foodStock;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "park_id", nullable = false)
+    public Park getPark() {
+        return park;
+    }
+
+    public void setPark(Park park) {this.park = park;}
+
     public void feedDinos(){
         for(Dino dino: this.dinosaurs){
             Random ran = new Random();
@@ -118,7 +126,6 @@ public class Paddock {
 
     public int countDinosaurs(){
         return this.dinosaurs.size();
-
     }
 
     public void breakout(){
@@ -128,13 +135,4 @@ public class Paddock {
         }
     }
 
-    @ManyToOne
-    @JoinColumn(name = "park_id", nullable = false)
-    public Park getPark() {
-        return park;
-    }
-
-    public void setPark(Park park) {
-        this.park = park;
-    }
 }

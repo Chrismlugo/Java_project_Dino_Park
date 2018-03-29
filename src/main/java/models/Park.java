@@ -50,26 +50,6 @@ public class Park {
         this.id = id;
     }
 
-
-
-    public List<Dino> Rampagers() {
-        return rampagers;
-    }
-
-    public void addVisitors(){
-        if(this.visitors < parkCapacity) {
-            Random ran = new Random();
-            int randomNumber = ran.nextInt((5));
-            int added = randomNumber;
-            this.visitors += added;
-        }
-
-    }
-
-    public void setRampagers(List<Dino> rampagers) {
-        this.rampagers = rampagers;
-    }
-
     @OneToMany(mappedBy = "park")
     @LazyCollection(LazyCollectionOption.FALSE)
     public List<Paddock> getPaddocks() {
@@ -89,6 +69,32 @@ public class Park {
         this.visitors = visitors;
     };
 
+    @Column(name="park_capacity")
+    public int getParkCapacity() {
+        return parkCapacity;
+    }
+
+    public void setParkCapacity(int park_capacity) {
+        this.parkCapacity = park_capacity;
+    }
+
+    public List<Dino> Rampagers() {
+        return rampagers;
+    }
+
+    public void setRampagers(List<Dino> rampagers) {
+        this.rampagers = rampagers;
+    }
+
+    public void addVisitors(){
+        if(this.visitors < parkCapacity) {
+            Random ran = new Random();
+            int randomNumber = ran.nextInt((5));
+            int added = randomNumber;
+            this.visitors += added;
+        }
+    }
+
     public int countVisitors(){
       return this.visitors;
     }
@@ -101,16 +107,6 @@ public class Park {
             }
         }
         return secure;
-    }
-
-
-    @Column(name="park_capacity")
-    public int getParkCapacity() {
-        return parkCapacity;
-    }
-
-    public void setParkCapacity(int park_capacity) {
-        this.parkCapacity = park_capacity;
     }
 
     public String parkSafetyStatus(){
