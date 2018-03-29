@@ -3,6 +3,22 @@ body{
 background: green;
 }
 
+body[class=login]{
+background-image: url("/images/Jurassic-Park_Logo-2-.jpg");
+background-size: cover;
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+div[class=container] form{
+margin: 0;
+}
+
+div[class=container]{
+display: flex;
+    flex-direction: column;
+    }
 
  label[class=hidden]{
   display:none;
@@ -27,47 +43,56 @@ header nav {
   justify-content: flex-end;
 }
 
-.jumbotron h1{
-font-family:'Nosifier', cursive;
+div[class=login]{
+
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center }
+
 }
 
+
 input[type=text]{
-  font-size: 15px;
-  width: 10%;
+  font-size: 20px;
+  width: 15%;
   padding: 5px;
   margin: 8px 0;
   border: none;
-  border-radius: 4px;
   background-color: rgba(221, 207, 30, 0.99);
 }
 
 a{
   display: flex;
-  font-family: 'Rubik', sans-serif;
   text-decoration: none;
 }
 
-a:link{
-  color: rgb(255, 255, 255);
-}
-
-a:visited{
-  color: rgb(13, 180, 180);
-}
-
-a:hover{
-  color: rgb(62, 218, 218);
-}
-
-a:active{
-  color: rgb(87, 11, 162);
-}
-
-.jumbotron{
+header[class=container2]{
     display: flex;
-    align-items: center;
-    background-image:url("/images/50823004-metal-texture-background.jpg";
-    color: #ffffff;
-    height: 500px;
-    text-shadow: 0.25px 0.25px 0.25px #000000;
+    justify-content: center;
+}
+
+
+header[class=container]{
+    display: flex;
+    justify-content: flex-end;
+}
+
+p[class=col-md-3 text-right]{
+display: flex;
+width: 25%;
+}
+
+nav[class=col-sm-8 text-right]{
+display: flex;
+justify-content: flex-end;
+}
+
+nav p{
+    padding: 5px;
+}
+
+nav a{
+    display: flex;
+    justify-content: flex-end;
 }

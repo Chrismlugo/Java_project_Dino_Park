@@ -52,7 +52,7 @@ public class TestDino {
 
     @Test
     public void dinosCanEat(){
-        raptor.feed();
+        raptor.feed(1);
         assertEquals(1, raptor.getBelly());
     }
 
@@ -69,10 +69,10 @@ public class TestDino {
 
     @Test
     public void dinosCannotExceedStomachCapacity(){
-        raptor.feed();
-        raptor.feed();
+        raptor.feed(1);
+        raptor.feed(1);
         assertEquals(2, raptor.getBelly());
-        raptor.feed();
+        raptor.feed(1);
         assertEquals(2, raptor.getBelly());
     }
 }
