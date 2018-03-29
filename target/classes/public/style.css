@@ -1,14 +1,11 @@
 
 body{
-background: green;
+ background-color: green;
+
 }
 
 body[class=login]{
-background-image: url("/images/50823004-metal-texture-background.jpg");
-background-size: cover;
-margin: 0;
-padding: 0;
-display: flex;
+background: url("/images/50823004-metal-texture-background.jpg");
 }
 
 div[class=container] form{
@@ -18,6 +15,7 @@ margin: 0;
 div[class=container]{
 display: flex;
     flex-direction: column;
+    font-color: yellow;
     }
 
  label[class=hidden]{
@@ -57,6 +55,9 @@ div[class=login]{
 
 }
 
+div[class=container3]{
+
+}
 
 input[type=text]{
   font-size: 20px;
@@ -64,7 +65,7 @@ input[type=text]{
   padding: 5px;
   margin: 8px 0;
   border: none;
-  background-color: rgba(221, 207, 30, 0.99);
+  background-color: rgb(255, 253, 69);
 }
 
 a{
@@ -78,15 +79,24 @@ header[class=container2]{
     justify-content: center;
 }
 
+p[class=pageHeader]{
+font-size: 30px;
+}
+
+th,tr{
+border-bottom: solid;
+border-color:rgba(221, 207, 30, 0.99);
+}
+
 
 header[class=container]{
     display: flex;
     justify-content: flex-end;
 }
 
-p[class=col-md-3 text-right]{
-display: flex;
-width: 25%;
+p[class= col-md-6 text-right]{
+border: solid;
+border-color: saddlebrown;
 }
 
 nav[class=col-sm-8 text-right]{
@@ -102,3 +112,14 @@ nav a{
     display: flex;
     justify-content: flex-end;
 }
+
+p{
+font-size: 16px;
+rgb(255, 253, 69);
+}
+
+p[class=visitors]{
+display: flex;
+justify-content: center;
+}
+
