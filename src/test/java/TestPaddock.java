@@ -6,7 +6,9 @@ import models.paddocks.Paddock;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 public class TestPaddock {
@@ -25,6 +27,11 @@ public class TestPaddock {
     public void paddockStartsEmpty() throws Exception {
         assertEquals(0, paddock.countDinosaurs());
         assertEquals(0, paddock.getFoodStock());
+    }
+
+    @Test
+    public void paddockStartsSecure(){
+        assertTrue(paddock.getPaddockSecure());
     }
 
     @Test
@@ -53,6 +60,13 @@ public class TestPaddock {
         paddock.addDino(dino);
         paddock.feedDinos();
         assertEquals(0, dino.getBelly());
+    }
+
+    @Test
+    public void paddockSecurityDependsOnHunger(){
+        paddock.addDino(dino);
+        assertTrue(dino.hungry());
+        assertFalse(paddock.isPaddockSecure());
     }
 
     @Test

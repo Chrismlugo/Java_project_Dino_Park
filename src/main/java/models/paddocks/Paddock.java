@@ -120,6 +120,10 @@ public class Paddock {
         return this.paddockSecure;
     }
 
+    public boolean getPaddockSecure(){
+        return this.paddockSecure;
+    }
+
     public void setPaddockSecure(boolean paddockSecure) {
         this.paddockSecure = paddockSecure;
     }
