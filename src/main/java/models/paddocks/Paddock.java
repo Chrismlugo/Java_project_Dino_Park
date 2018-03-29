@@ -87,7 +87,7 @@ public class Paddock {
         for(Dino dino: this.dinosaurs){
             Random ran = new Random();
             int foodAmount = ran.nextInt((5) + 1);
-            if(this.foodStock > foodAmount) {
+            if(this.foodStock >= foodAmount) {
                 dino.feed(foodAmount);
                 this.foodStock -= foodAmount;
                 DBHelper.saveOrUpdate(dino);
@@ -117,12 +117,10 @@ public class Paddock {
     }
 
     public void breakout(){
-
-        if(this.paddockSecure == false){
+        if(!this.paddockSecure){
             park.setRampagers(dinosaurs);
-
+            dinosaurs.clear();
         }
-        dinosaurs.clear();
     }
 
     @ManyToOne
