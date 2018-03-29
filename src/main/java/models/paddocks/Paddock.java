@@ -118,6 +118,19 @@ public class Paddock {
             }
         }
         return this.paddockSecure;
+
+
+    }
+
+    public boolean checkDinosAreFed(){
+        Boolean secure = true;
+        for(Dino dino: dinosaurs){
+            if(dino.getBelly() == 0){
+                secure = false;
+            }
+
+        }
+        return secure;
     }
 
     public boolean getPaddockSecure(){

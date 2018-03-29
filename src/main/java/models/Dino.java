@@ -35,7 +35,7 @@ public abstract class Dino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -71,7 +71,7 @@ public abstract class Dino {
         this.species = species;
     }
 
-    @Column(name= "stomach_size")
+    @Column(name = "stomach_size")
     public StomachSize getStomachSize() {
         return stomachSize;
     }
@@ -94,12 +94,12 @@ public abstract class Dino {
         return this.stomachSize.getSize();
     }
 
-    public boolean hungry(){
+    public boolean hungry() {
         return getBelly() == 0;
     }
 
     public void feed(int foodAmount) {
-        if(foodAmount + getBelly() < stomachCapacity()){
+        if (foodAmount + getBelly() < stomachCapacity()) {
             this.belly += foodAmount;
         } else {
             this.belly = stomachCapacity();
@@ -111,31 +111,25 @@ public abstract class Dino {
         String transfer = "or check for paddock transfer";
         if (belly == 0) {
             if (species == SpeciesType.HERBIVORE) {
-                return String.format("Unhealthy: Check %s food store %s", paddock, transfer);
+                return String.format("Unhappy: Check %s food store %s", paddock, transfer);
             }
 
-            return String.format("Unhealthy: Check %s food store ", paddock);
+            return String.format("Raging: Check %s food store ", paddock);
 
         }
-      
+
         if (belly < stomachCapacity() - 2) {
 
-            return String.format("Potential Health Risk: check food store in  %s ", paddock);
+            return String.format("Potential Risk: ensure food store is stocked in  %s ", paddock);
 
         }
 
-        if (belly >= stomachCapacity() - 1) {
-            return String.format("Moderately healthy: check %s ", paddock);
-
-        }
         if (belly >= stomachCapacity()) {
 
             return String.format("Healthy");
 
-        } else {
 
         }
-        return null;
-
+        return "...Tracker malfunction";
     }
 }
