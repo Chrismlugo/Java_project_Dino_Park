@@ -20,7 +20,9 @@
             <td>$raptor.getPaddock().getName()</td>
             <td><a href="/raptors/$raptor.getId()" class="button center">View</a></td>
             <td><a href="/raptors/$raptor.getId()/edit" class="button center">edit</a></td>
-            <td><a href="/raptors/$raptor.getId()/delete" class="button center">destroy</a></td>
+            <td><form action="/raptors/$raptor.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
         </tr>
         #end
     </table>

@@ -20,7 +20,9 @@
             <td>$diplo.getPaddock().getName()</td>
             <td><a href="/diplos/$diplo.getId()" class="button center">view</a></td>
             <td><a href="/diplos/$diplo.getId()/edit" class="button center">edit</a></td>
-            <td><a href="/diplos/$diplo.getId()/delete" class="button center">destroy</a></td>
+            <td><form action="/diplos/$diplo.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
         </tr>
         #end
     </table>
