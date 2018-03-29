@@ -70,6 +70,7 @@ input[type=text]{
 a{
   display: flex;
   text-decoration: none;
+  font-size: 20px;
 }
 
 header[class=container2]{
