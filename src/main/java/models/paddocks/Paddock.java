@@ -104,7 +104,12 @@ public class Paddock {
     }
 
     public boolean isPaddockSecure() {
-        return paddockSecure;
+        for(Dino dino: this.dinosaurs) {
+            if (dino.hungry()){
+                this.paddockSecure = false;
+            }
+        }
+        return this.paddockSecure;
     }
 
     public void setPaddockSecure(boolean paddockSecure) {

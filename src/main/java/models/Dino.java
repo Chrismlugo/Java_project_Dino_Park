@@ -104,7 +104,9 @@ public abstract class Dino {
         return this.stomachSize.getSize();
     }
 
-
+    public boolean hungry(){
+        return getBelly() == 0;
+    }
 
 
     public String hungerLevel() {
