@@ -19,13 +19,13 @@ public class TestTRex {
         tRex = new TRex("Biggy Smalls", paddock);
         paddock.getDinosaurs().add(tRex);
     }
-
-    @Test
-    public void canRampage() {
-        assertEquals(1, paddock.countDinosaurs());
-        tRex.rampage();
-        assertEquals(0, paddock.countDinosaurs());
-    }
+//
+//    @Test
+//    public void canRampage() {
+//        assertEquals(1, paddock.countDinosaurs());
+//        tRex.rampage();
+//        assertEquals(0, paddock.countDinosaurs());
+//    }
 
 
 }

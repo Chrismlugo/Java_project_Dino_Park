@@ -154,6 +154,15 @@ public class PaddocksController {
             return null;
         }, new VelocityTemplateEngine());
 
+        post ("/paddocks/:id/secure", (req,res) ->{
+            Integer id = Integer.parseInt(req.params("id"));
+            Paddock paddockToSecure = DBHelper.find(Paddock.class,id);
+            paddockToSecure.setPaddockSecure(true);
+            DBHelper.saveOrUpdate(paddockToSecure);
+            res.redirect("/paddocks");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
 
         post("/paddocks/:id", (req,res) ->{

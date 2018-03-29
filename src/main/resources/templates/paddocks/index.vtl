@@ -13,7 +13,7 @@
             <th>Food Stock</th>
             <th>Secure</th>
         </tr>
-        #foreach($paddock in $paddocks )
+             #foreach($paddock in $paddocks )
         <tr>
             <td>$paddock.getName()</td>
             <td>$paddock.getSpecies()</td>
@@ -25,7 +25,14 @@
                 <input type="submit" value="Delete" class="button center">
             </form></td>
 
+
+            #if ($paddock.checkDinosAreFed() == true)
+            <td>
+                <form action="/paddocks/$paddock.getId()/secure" method="post">
+                    <input type="submit" value="Secure" class="button center">
+                </form></td>
+            #end
         </tr>
-        #end
+            #end
     </table>
 </div>
