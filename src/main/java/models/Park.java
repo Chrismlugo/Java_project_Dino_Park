@@ -27,7 +27,7 @@ public class Park {
         this.rampagers = new ArrayList<>();
         this.paddocks = new ArrayList<>();
         this.visitors = 0;
-        this.parkCapacity = 15;
+        this.parkCapacity = 50;
     }
 
     @Column(name = "name")
@@ -89,7 +89,7 @@ public class Park {
     public void addVisitors(){
         if(this.visitors < parkCapacity) {
             Random ran = new Random();
-            int randomNumber = ran.nextInt((5));
+            int randomNumber = ran.nextInt((15)+10);
             int added = randomNumber;
             this.visitors += added;
         }

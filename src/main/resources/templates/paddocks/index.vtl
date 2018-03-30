@@ -26,7 +26,7 @@
             </form></td>
 
 
-            #if ($paddock.checkDinosAreFed() == true)
+            #if ($paddock.checkDinosAreFed() == true && $paddock.isPaddockSecure() != true)
             <td>
                 <form action="/paddocks/$paddock.getId()/secure" method="post">
                     <input type="submit" value="Secure" class="button center">

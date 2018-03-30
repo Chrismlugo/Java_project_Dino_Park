@@ -94,6 +94,10 @@ public abstract class Dino {
         return this.stomachSize.getSize();
     }
 
+    public int checkFoodTrough(){
+     return  getPaddock().getFoodStock();
+    }
+
     public boolean hungry() {
         return getBelly() == 0;
     }
@@ -118,7 +122,7 @@ public abstract class Dino {
 
         }
 
-        if (belly < stomachCapacity() - 2) {
+        if (belly < stomachCapacity() - 2 || checkFoodTrough() == 0) {
 
             return String.format("Potential Risk: ensure food store is stocked in  %s ", paddock);
 
@@ -126,7 +130,7 @@ public abstract class Dino {
 
         if (belly >= stomachCapacity()) {
 
-            return String.format("Healthy");
+            return String.format("Happy and Healthy");
 
 
         }

@@ -12,7 +12,7 @@ import java.util.Random;
 
 @Entity
 @Table(name="rexes")
-public class TRex extends Dino {
+public class TRex extends Dino  {
 
     private ArrayList<String> rampageStates;
 
@@ -43,7 +43,7 @@ public class TRex extends Dino {
 
     public void rampage() {
 
-        if (getBelly() < getStomachSize().getSize()) {
+        if (getPaddock().getFoodStock() == 0) {
             Random ran = new Random();
             int randomNumber = ran.nextInt((3) + 1);
             if (randomNumber == 3) {
